@@ -67,47 +67,6 @@ export default defineConfig({
     ],
   },
 
-  security: {
-    csp: {
-      directives: [
-        "default-src 'self'",
-        "object-src 'self'",
-　　　　 "connect-src 'self' https://challenges.cloudflare.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://*.adtrafficquality.google", // 💡Googleを追加
-        "base-uri 'self'",
-        "img-src 'self' https://res.cloudinary.com/dellp9a4z/ data: https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com",
-        "media-src 'self' https://res.cloudinary.com/dellp9a4z/",
-        "font-src 'self' data:",
-        "frame-src 'self' https://challenges.cloudflare.com https://www.youtube.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://*.googlesyndication.com https://*.google.com",
-        "worker-src 'self' blob: https://challenges.cloudflare.com",
-        "child-src 'self' https://challenges.cloudflare.com blob:",
-        "manifest-src 'none'",
-      ],
-      scriptDirective: {
-        resources: ["'self'", "https://challenges.cloudflare.com", "blob:", "https://www.googletagmanager.com", "https://cdnjs.cloudflare.com", "https://pagead2.googlesyndication.com", "https://googleads.g.doubleclick.net", "https://*.googlesyndication.com", "https://*.doubleclick.net", "https://*.google.com"],
-        hashes: [
-          "sha256-+D181lN2Iw1b9lkNhIL2BSfLXvTnxTpdqxKE5OjSgk0=",
-          "sha256-UnpvhDyF7OXferJXLLEvpK6eSVKujiCxuakCMAAfX0k=",
-          "sha256-1uLA37rSE279Z3LD4V5UesnNrJXsLL3WlqRDPbR0SiQ=",
-          "sha256-XOWpFOzUtq3WTcITdHEbeGIbvByWMkUYHPLkeNqUnrg=",
-          "sha256-O/cT6xyqpBVZwWGYzXVpX7QJEsLa8cqTX0G7ptzRry8=",
-          "sha256-y8GXDJSth6TkGGn3PesTxxuEoiMEn+PMMT3VzFcGcc8=",
-          "sha256-BF0290pkb3jxQsE7z00xR8Imp8X34FLC88L0lkMnrGw=",
-          "sha256-QzWFZi+FLIx23tnm9SBU4aEgx4x8DsuASP07mfqol/c=",
-          "sha256-0chmwFk0zaA528yFfGV7J9ppIpdfTPPULncDF3WG7Zs=",
-          "sha256-eIXWvAmxkr251LJZkjniEK5LcPF3NkapbJepohwYRIc=",
-          "sha256-Q2BPg90ZMplYY+FSdApNErhpWafg2hcRRbndmvxuL/Q=",
-          "sha256-YvmHN+RLoaKyj0Wvr1lawwJSU85HX9VU+XMIN2yJTdI=",
-          "sha256-jSFsJYwhDHypqJFbTussDBgVy5SfI7/I1Juw45A85DE=",
-          "sha256-QRrI35crkGvfyHe4zDJ4r+s9AyoB6wP86lLVZJgBJJk=",
-          "sha256-rCn5nJyNZtakRTgxqQ4cgq3NnuaXef+t98PEJ4YYIV8=",
-        ],
-      },
-      styleDirective: {
-        resources: ["'self'", "'unsafe-inline'"],
-      },
-    },
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
