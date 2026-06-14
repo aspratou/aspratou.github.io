@@ -7,7 +7,7 @@ license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "cambly"]
 image:
-  src: "https://aspratou.github.io/images/AdobeStock_2512654.webp"
+  src: "/images/english/e3bb24d807130f0ab597fb0025793ca8-940x532.png"
   alt: "カバー画像"
 ---
 

@@ -7,7 +7,7 @@ license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "vrc"]
 image:
-  src: "https://aspratou.github.io/images/AdobeStock_2512654.webp"
+  src: "/images/english/VRChat.webp"
   alt: "カバー画像"
 ---
 

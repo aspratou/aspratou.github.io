@@ -5,7 +5,7 @@ pubDate: 2026-06-10
 draft: false
 license: "all-rights-reserved"
 image:
-  src: "https://aspratou.github.io/images/AdobeStock_2512654.webp"
+  src: "/images/game/banner_0.jpg"
   alt: "カバー画像"
 ---
 

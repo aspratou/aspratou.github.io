@@ -7,7 +7,7 @@ license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
 image:
-  src: "https://aspratou.github.io/images/AdobeStock_2512654.webp"
+  src: "/images/book/81nUh4KWaaL._SL1500_.jpg"
   alt: "カバー画像"
 ---
 

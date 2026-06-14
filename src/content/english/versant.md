@@ -7,7 +7,7 @@ license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "versant"]
 image:
-  src: "https://aspratou.github.io/images/AdobeStock_2512654.webp"
+  src: "/images/english/名称未設定-3.jpg"
   alt: "カバー画像"
 ---
 
