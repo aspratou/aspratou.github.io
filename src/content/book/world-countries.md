@@ -7,7 +7,7 @@ license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
 image:
-  src: "https://res.cloudinary.com/dellp9a4z/image/upload/v1756758388/og-projects_mj7lcc.png"
+  src: "https://aspratou.github.io/images/AdobeStock_2512654.webp"
   alt: "カバー画像"
 ---
 

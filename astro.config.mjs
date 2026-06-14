@@ -72,18 +72,18 @@ export default defineConfig({
       directives: [
         "default-src 'self'",
         "object-src 'self'",
-　　　　 "connect-src 'self' https://challenges.cloudflare.com https://www.google-analytics.com", // 💡Googleを追加
+　　　　 "connect-src 'self' https://challenges.cloudflare.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net", // 💡Googleを追加
         "base-uri 'self'",
-        "img-src 'self' https://res.cloudinary.com/dellp9a4z/ data:",
+        "img-src 'self' https://res.cloudinary.com/dellp9a4z/ data: https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com",
         "media-src 'self' https://res.cloudinary.com/dellp9a4z/",
         "font-src 'self' data:",
-        "frame-src 'self' https://challenges.cloudflare.com https://www.youtube.com",
+        "frame-src 'self' https://challenges.cloudflare.com https://www.youtube.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://*.googlesyndication.com https://*.google.com",
         "worker-src 'self' blob: https://challenges.cloudflare.com",
         "child-src 'self' https://challenges.cloudflare.com blob:",
         "manifest-src 'none'",
       ],
       scriptDirective: {
-        resources: ["'self'", "https://challenges.cloudflare.com", "blob:", "https://www.googletagmanager.com", "https://cdnjs.cloudflare.com"],
+        resources: ["'self'", "https://challenges.cloudflare.com", "blob:", "https://www.googletagmanager.com", "https://cdnjs.cloudflare.com", "https://pagead2.googlesyndication.com", "https://googleads.g.doubleclick.net", "https://*.googlesyndication.com", "https://*.doubleclick.net", "https://*.google.com"],
         hashes: [
           "sha256-+D181lN2Iw1b9lkNhIL2BSfLXvTnxTpdqxKE5OjSgk0=",
           "sha256-UnpvhDyF7OXferJXLLEvpK6eSVKujiCxuakCMAAfX0k=",
