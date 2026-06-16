@@ -1,7 +1,7 @@
 ---
 title: "身近にあふれる科学がわかる本"
 description: "何気なく使っているテレビ、エアコン、……それらが「なぜ動くのか？」「どうしてそうなるのか？」を、やさしい科学の視点でひもとく1冊"
-pubDate: 2026-06-14
+pubDate: 2026-06-12
 draft: false
 license: "all-rights-reserved"
 categories: ["book"]

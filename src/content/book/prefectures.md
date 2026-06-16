@@ -1,7 +1,7 @@
 ---
 title: "おぼえる！学べる！たのしい都道府県"
 description: "各県の「すごい！」を３つにしぼって紹介し、「なぜこれが有名なの？」「どうしてこうなったの？」がわかる本。"
-pubDate: 2026-06-12
+pubDate: 2026-06-11
 draft: false
 license: "all-rights-reserved"
 categories: ["book"]

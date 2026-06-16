@@ -1,7 +1,7 @@
 ---
 title: "おぼえる! 学べる! たのしい世界の国"
 description: "91の国と地域について、絵と文でたのしく解説"
-pubDate: 2026-06-12
+pubDate: 2026-06-11
 draft: false
 license: "all-rights-reserved"
 categories: ["book"]
