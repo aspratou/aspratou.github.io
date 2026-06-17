@@ -1,6 +1,7 @@
 ---
+featured: '1'
 title: "VR Chat"
-description: "VR Chat で英語は学べる？"
+description: "VR Chat で英語は学べる？おすすめのワールドと実際にプレイしてみた正直な感想"
 pubDate: 2026-06-10
 draft: false
 license: "all-rights-reserved"
@@ -18,7 +19,7 @@ https://hello.vrchat.com/
 VRC はいろんな国の人がプレイしているので、英語話者と話せば楽しいし英語の勉強もできて一石二鳥ではないかと思い、プレイしていた。
 
 ### 英語勉強用ワールド
-実は、そういうモチベーションの人用にこんなワールドもある<br>
+実は、そういうモチベーションの人用にこんなワールドもある<br><br>
 EN-JP Language Exchange<br>
 https://vrchat.com/home/launch?worldId=wrld_153be667-a86e-4aaf-9eed-921bd568ee9b
 
@@ -40,7 +41,7 @@ https://vrchat.com/home/launch?worldId=wrld_153be667-a86e-4aaf-9eed-921bd568ee9b
 
 
 
-とまあこんな感じでした。
+とまあこんな感じだった。
 
 3か月でやめてしまった理由は、時間が取れなくなってしまったから。
 

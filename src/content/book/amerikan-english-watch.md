@@ -1,4 +1,5 @@
 ---
+featured: '3'
 title: "米語ウォッチ アメリカの「今」を読み解くキーワード131"
 description: "アメリカ社会で話題に上る言葉を紹介する本。アメリカの今を解説する。"
 pubDate: 2026-06-13
@@ -14,8 +15,7 @@ image:
 ## ビジネスマンにもおすすめの本
 アメリカ文化、特に英語学習者におすすめの本がある。
 
-米語ウォッチ　アメリカの「今」を読み解くキーワード131<br>
-https://amzn.asia/d/0amaSOt0
+<a href="//af.moshimo.com/af/c/click?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2F4910739572" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="https://images-fe.ssl-images-amazon.com/images/I/51lh6Dln0rL._SL500_.jpg" alt="" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">米語ウォッチ　アメリカの「今」を読み解くキーワード131</a><img src="//i.moshimo.com/af/i/impression?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062" alt="" loading="lazy" width="1" height="1" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">
 
 アメリカのニュースや日常会話で、話題となっているテーマをキーワード毎に解説してくれる。
 

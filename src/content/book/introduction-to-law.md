@@ -21,8 +21,7 @@ image:
 
 この本も別の本をお目当てに書店をぶらついていたところ目について、手に取ったものだ。
 
-僕らが生きているよのなかのしくみは「法」でわかる　~13歳からの法学入門~<br>
-https://amzn.asia/d/09tVJgTc
+<a href="//af.moshimo.com/af/c/click?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB07W7YBL2F" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="https://images-fe.ssl-images-amazon.com/images/I/51LFodJgqGL._SL500_.jpg" alt="" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">僕らが生きているよのなかのしくみは「法」でわかる～13歳からの法学入門</a><img src="//i.moshimo.com/af/i/impression?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062" alt="" loading="lazy" width="1" height="1" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">
 
 法律の話は割と好きだ。
 

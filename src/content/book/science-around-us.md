@@ -19,8 +19,7 @@ image:
 
 ただ、この本は表紙が目に入って面白そうだと思って買ってしまった。
 
-身近にあふれる「科学」が3時間でわかる本<br>
-https://amzn.asia/d/0aa5YKRz
+<a href="//af.moshimo.com/af/c/click?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2F4756924093" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="https://images-fe.ssl-images-amazon.com/images/I/51PPVUcZvVL._SL500_.jpg" alt="" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">ポケット版 身近にあふれる「科学」が3時間でわかる本</a><img src="//i.moshimo.com/af/i/impression?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062" alt="" loading="lazy" width="1" height="1" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">
 
 私はIT関係の仕事をしているが、理系のことで知らないことはたくさんある。
 

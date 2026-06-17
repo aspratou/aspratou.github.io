@@ -1,4 +1,5 @@
 ---
+featured: '2'
 title: "小学生でもわかる世界史"
 description: "わかりやすさを求めたあまり、詳しさと丁寧さを犠牲にした暴書"
 pubDate: 2026-06-14
@@ -20,8 +21,7 @@ https://www.youtube.com/@Piyopiiyosokuhou
 
 このYoutube チャンネルを運営している方が本を出していたので、手に取ってみた。
 
-小学生でもわかる世界史<br>
-https://amzn.asia/d/07dC5hBl
+<a href="//af.moshimo.com/af/c/click?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB0CQC6KXV2" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="https://images-fe.ssl-images-amazon.com/images/I/51KUhFz2XJL._SL500_.jpg" alt="" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">小学生でもわかる世界史</a><img src="//i.moshimo.com/af/i/impression?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062" alt="" loading="lazy" width="1" height="1" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">
 
 私は歴史全般に疎く、こういったわかりやすく解説してくれる本があるとぜひ読みたくなる。
 
