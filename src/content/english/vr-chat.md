@@ -1,7 +1,7 @@
 ---
 featured: '1'
 title: "VR Chat"
-description: "VR Chat で英語は学べる？おすすめのワールドと実際にプレイしてみた正直な感想"
+description: "VR Chat は英語学習に役立つのか。おすすめのワールドと実際にプレイしてみた正直な感想"
 pubDate: 2026-06-10
 draft: false
 license: "all-rights-reserved"
