@@ -19,14 +19,18 @@ const { entry } = Astro.props;
 
 const { Content, headings } = await render(entry);
 
-const allPostsInCollection =
-    entry.collection === "diary"
-        ? await getCollection("diary")
-        : await getCollection("book");
+const allPostsInCollection = await getCollection(
+    entry.collection as "diary" | "book" | "game" | "english",
+    ({ data }) => !data.draft,
+);
 
-const postIndex = allPostsInCollection.findIndex((e) => e.id === entry.id);
-const prevPost = allPostsInCollection[postIndex + 1];
-const nextPost = allPostsInCollection[postIndex - 1];
+const sortedPosts = allPostsInCollection.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const postIndex = sortedPosts.findIndex((e) => e.id === entry.id);
+const prevPost = sortedPosts[postIndex + 1];
+const nextPost = sortedPosts[postIndex - 1];
 ---
 
 <BaseLayout
