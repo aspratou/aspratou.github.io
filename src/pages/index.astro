@@ -15,30 +15,15 @@ const allEnglish = await getCollection("english", ({ data }) => !data.draft);
 const sortedPosts = [...allDiaries, ...allBooks, ...allGames, ...allEnglish].sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const sortedBooks = allBooks.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-const sortedGames = allGames.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
 
-const latestPosts = sortedPosts.slice(0, 3).map((post) => attachMeta(post));
-const latestBooks = sortedBooks
-    .slice(0, 3)
-    .map((book) => attachMeta(book));
-const latestGames = sortedGames
-    .slice(0, 3)
-    .map((game) => attachMeta(game));
+const latestPosts = sortedPosts.slice(0, 5).map((post) => attachMeta(post));
 
 const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
     .filter((item) => item.data.featured !== undefined)
     .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0));
 
 const hasContent =
-    featured.length > 0 ||
-    latestPosts.length > 0 ||
-    latestBooks.length > 0 ||
-    latestGames.length > 0;
+    featured.length > 0 || latestPosts.length > 0;
 ---
 
 <BaseLayout
@@ -59,24 +44,7 @@ const hasContent =
                             href="/diary"
                             viewAllText="View all posts →"
                             items={latestPosts}
-                        />
-                    )}
-
-                    {latestBooks.length > 0 && (
-                        <ContentGrid
-                            title="Latest Books"
-                            href="/book"
-                            viewAllText="View all books →"
-                            items={latestBooks}
-                        />
-                    )}
-
-                    {latestGames.length > 0 && (
-                        <ContentGrid
-                            title="Latest Games"
-                            href="/game"
-                            viewAllText="View all games →"
-                            items={latestGames}
+                            variant="list"
                         />
                     )}
                 </>

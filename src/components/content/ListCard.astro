@@ -1,0 +1,60 @@
+---
+import type { ContentEntry, ImageLoading, WithMeta } from "../../types";
+import FormattedDate from "./FormattedDate.astro";
+import Tags from "./Tags.astro";
+
+interface Props {
+    entry: WithMeta<ContentEntry>;
+    loading?: ImageLoading;
+}
+const { entry, loading = "lazy" } = Astro.props;
+
+const { collection, id, data, meta } = entry;
+const { title, description, pubDate, updatedDate, image, tags } = data;
+const { readingTimeText } = meta || {};
+
+const displayDate = updatedDate ?? pubDate;
+---
+
+<article class="group relative flex gap-5 py-5">
+    <a
+        href={`/${collection}/${id}`}
+        class="after:absolute after:inset-0 after:content-['']"
+        aria-label={title}
+    >
+        <div class="w-32 h-20 shrink-0 overflow-hidden rounded-md bg-gray-100 dark:bg-gray-800 sm:w-40 sm:h-24">
+            <img
+                src={image.src}
+                alt={image.alt}
+                loading={loading}
+                class="w-full h-full object-cover transition duration-250 ease-out group-hover:scale-105"
+            />
+        </div>
+    </a>
+
+    <div class="flex flex-col justify-center gap-1 min-w-0">
+        <h3 class="line-clamp-1 text-base font-semibold transition-colors duration-250 group-hover:text-blue-500 dark:group-hover:text-yellow-400">
+            {title}
+        </h3>
+        <p class="line-clamp-2 text-sm text-gray-500 dark:text-gray-400">
+            {description}
+        </p>
+        <div class="flex items-center gap-x-2 text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <FormattedDate date={displayDate} />
+            {readingTimeText && (
+                <>
+                    <span>&middot;</span>
+                    <span>{readingTimeText}</span>
+                </>
+            )}
+            {tags.length > 0 && (
+                <>
+                    <span>&middot;</span>
+                    <span class="relative z-10">
+                        <Tags {tags} />
+                    </span>
+                </>
+            )}
+        </div>
+    </div>
+</article>
