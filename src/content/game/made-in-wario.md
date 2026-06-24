@@ -4,6 +4,8 @@ description: "Nintendo Classicで遊ぶ"
 pubDate: 2026-06-13
 draft: false
 license: "all-rights-reserved"
+categories: ["game"]
+tags: ["game", "switch"]
 image:
   src: "/images/game/71z9nLP0NBL._AC_UF1000,1000_QL80_.jpg"
   alt: "カバー画像"

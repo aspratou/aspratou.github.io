@@ -16,7 +16,7 @@ const sortedPosts = [...allDiaries, ...allBooks, ...allGames, ...allEnglish].sor
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const latestPosts = sortedPosts.slice(0, 5).map((post) => attachMeta(post));
+const latestPosts = sortedPosts.slice(0, 3).map((post) => attachMeta(post));
 
 const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
     .filter((item) => item.data.featured !== undefined)

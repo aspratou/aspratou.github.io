@@ -4,6 +4,8 @@ description: "2人でサクッと遊ぶゲーム"
 pubDate: 2026-06-10
 draft: false
 license: "all-rights-reserved"
+categories: ["game"]
+tags: ["game", "switch"]
 image:
   src: "/images/game/banner_0.jpg"
   alt: "カバー画像"
