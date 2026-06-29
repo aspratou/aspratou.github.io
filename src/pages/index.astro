@@ -12,18 +12,26 @@ const allBooks = await getCollection("book", ({ data }) => !data.draft);
 const allGames = await getCollection("game", ({ data }) => !data.draft);
 const allEnglish = await getCollection("english", ({ data }) => !data.draft);
 
-const sortedPosts = [...allDiaries, ...allBooks, ...allGames, ...allEnglish].sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const sortByDate = (arr: typeof allDiaries) =>
+    arr.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const latestPosts = sortedPosts.slice(0, 3).map((post) => attachMeta(post));
+const tabItems = {
+    diary: sortByDate(allDiaries).slice(0, 5).map((p) => attachMeta(p)),
+    book: sortByDate(allBooks).slice(0, 5).map((p) => attachMeta(p)),
+    game: sortByDate(allGames).slice(0, 5).map((p) => attachMeta(p)),
+    english: sortByDate(allEnglish).slice(0, 5).map((p) => attachMeta(p)),
+};
+
+// タブ用のitemsはダミーで全件渡す（ContentGrid内ではtabItemsを使う）
+const allItems = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .map((p) => attachMeta(p));
 
 const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
     .filter((item) => item.data.featured !== undefined)
     .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0));
 
-const hasContent =
-    featured.length > 0 || latestPosts.length > 0;
+const hasContent = featured.length > 0 || allItems.length > 0;
 ---
 
 <BaseLayout
@@ -38,13 +46,14 @@ const hasContent =
                         <FeaturedContent items={featured} />
                     )}
 
-                    {latestPosts.length > 0 && (
+                    {allItems.length > 0 && (
                         <ContentGrid
                             title="Latest Posts"
                             href="/posts"
                             viewAllText="View all posts →"
-                            items={latestPosts}
-                            variant="list"
+                            items={allItems}
+                            variant="tabs"
+                            tabItems={tabItems}
                         />
                     )}
                 </>

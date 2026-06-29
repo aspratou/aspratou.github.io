@@ -47,7 +47,5 @@ IELTSはよくある4技能（リスニング、ライティング、リーデ�
 
 （受験のためにパスポートをつくったのだが、これは将来の海外旅行のための投資と思っておく）
 
-ちなみに私がつかった参考書はこちら↓
-<br>
-https://amzn.asia/d/05T38Yj3
-
+ちなみに私がつかった参考書はこちら↓<br>
+<a href="//af.moshimo.com/af/c/click?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB07KVXXVYK" rel="nofollow" referrerpolicy="no-referrer-when-downgrade"><img src="https://images-fe.ssl-images-amazon.com/images/I/51a2OntLmjL._SL500_.jpg" alt="" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">はじめてのIELTS 全パート総合対策 (アスク出版)</a><img src="//i.moshimo.com/af/i/impression?a_id=5633291&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062" alt="" loading="lazy" width="1" height="1" style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;">

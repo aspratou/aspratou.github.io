@@ -12,7 +12,8 @@ interface Props {
     href?: string;
     viewAllText?: string;
     eagerLoadCount?: number;
-    variant?: "grid" | "list";
+    variant?: "grid" | "list" | "tabs";
+    tabItems?: Record<string, WithMeta<ContentEntry>[]>;
 }
 
 const {
@@ -23,16 +24,53 @@ const {
     class: cls,
     eagerLoadCount = 0,
     variant = "grid",
+    tabItems,
 } = Astro.props;
 
 if (!items || items.length === 0) return null;
+
+const TAB_LABELS: Record<string, string> = {
+    diary: "日記",
+    book: "本",
+    game: "ゲーム",
+    english: "英語",
+};
 ---
 
 <section>
     {title && href && <SectionHeader {title} {href} {viewAllText} />}
 
-    {variant === "list" ? (
-        <div class="flex flex-col divide-y divide-neutral-700 dark:divide-neutral-600">
+    {variant === "tabs" && tabItems ? (
+        <div x-data={`{ activeTab: '${Object.keys(tabItems)[0]}' }`}>
+            {/* タブボタン */}
+            <div class="flex gap-0 border-b border-[#E2E8F0] dark:border-neutral-700 mb-2">
+                {Object.keys(tabItems).map((key) => (
+                    <button
+                        x-on:click={`activeTab = '${key}'`}
+                        x-bind:class={`activeTab === '${key}' ? 'border-b-2 border-[#3EA8FF] text-[#3EA8FF] font-semibold' : 'text-gray-500 hover:text-[#3EA8FF]'`}
+                        class="px-4 py-2 text-sm transition-colors duration-200 -mb-px"
+                    >
+                        {TAB_LABELS[key] ?? key}
+                    </button>
+                ))}
+            </div>
+
+            {/* タブコンテンツ */}
+            {Object.entries(tabItems).map(([key, tabEntries]) => (
+                <div x-show={`activeTab === '${key}'`} x-cloak>
+                    <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-neutral-700">
+                        {tabEntries.map((item, index) => (
+                            <ListCard
+                                entry={item}
+                                loading={index < eagerLoadCount ? "eager" : "lazy"}
+                            />
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    ) : variant === "list" ? (
+        <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-neutral-700">
             {items.map((item, index) => (
                 <ListCard
                     entry={item}

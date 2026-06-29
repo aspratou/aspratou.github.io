@@ -24,13 +24,13 @@ html.overlay-open {
 
 body {
     font-family:
-        var(--font-inter),
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Roboto,
-        Helvetica,
-        Arial,
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        Meiryo,
         sans-serif;
 }
 
@@ -93,11 +93,11 @@ img.no-zoom {
 
 /* Post styling */
 .prose a:not(.anchor) {
-    @apply inline-block text-blue-600 underline decoration-transparent transition-all duration-250 ease-out hover:decoration-current active:scale-95 dark:text-yellow-400;
+    @apply inline-block text-[#3EA8FF] underline decoration-transparent transition-all duration-250 ease-out hover:decoration-current active:scale-95 dark:text-[#3EA8FF];
 }
 
 .prose .anchor {
-    @apply relative inline-block text-inherit decoration-transparent transition-all duration-250 ease-out hover:text-blue-500 hover:decoration-current active:scale-95 dark:hover:text-yellow-400;
+    @apply relative inline-block text-inherit decoration-transparent transition-all duration-250 ease-out hover:text-[#3EA8FF] hover:decoration-current active:scale-95 dark:hover:text-[#3EA8FF];
 }
 
 .prose .anchor::before {
@@ -149,7 +149,7 @@ img.no-zoom {
 /* TOC styling */
 /* Active link styling */
 .toc-item-wrapper.is-active > a {
-    @apply font-semibold text-blue-600 dark:text-yellow-400;
+    @apply font-semibold text-[#3EA8FF] dark:text-[#3EA8FF];
 }
 
 /* Read link styling */
@@ -158,13 +158,13 @@ img.no-zoom {
 }
 
 .toc-item-wrapper.is-read > a:hover {
-    @apply text-blue-500 dark:text-yellow-400;
+    @apply text-[#3EA8FF] dark:text-[#3EA8FF];
 }
 
 /* Active section background highlight */
 .toc-item-wrapper.is-active,
 .toc-item-wrapper.has-active-child {
-    @apply bg-blue-500/10 dark:bg-yellow-400/10;
+    @apply bg-[#3EA8FF]/10 dark:bg-[#3EA8FF]/10;
 }
 
 .toc-item-wrapper[data-depth="3"].is-active,
