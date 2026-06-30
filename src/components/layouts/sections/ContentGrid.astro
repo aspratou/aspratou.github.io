@@ -35,20 +35,28 @@ const TAB_LABELS: Record<string, string> = {
     game: "Game",
     english: "English",
 };
+
+const tabKeys = tabItems ? Object.keys(tabItems) : [];
+const firstKey = tabKeys[0];
 ---
 
 <section>
     {title && href && <SectionHeader {title} {href} {viewAllText} />}
 
     {variant === "tabs" && tabItems ? (
-        <div x-data={`{ activeTab: '${Object.keys(tabItems)[0]}' }`}>
+        <div class="js-tabs">
             {/* タブボタン */}
-            <div class="flex gap-0 border-b border-[#E2E8F0] dark:border-neutral-700 mb-2">
-                {Object.keys(tabItems).map((key) => (
+            <div class="flex gap-0 border-b border-[#E2E8F0] dark:border-[#2C2C30] mb-2">
+                {tabKeys.map((key) => (
                     <button
-                        x-on:click={`activeTab = '${key}'`}
-                        x-bind:class={`activeTab === '${key}' ? 'border-b-2 border-[#3EA8FF] text-[#3EA8FF] font-semibold' : 'text-gray-500 hover:text-[#3EA8FF]'`}
-                        class="px-4 py-2 text-sm transition-colors duration-200 -mb-px"
+                        type="button"
+                        data-tab-button={key}
+                        class={cn(
+                            "px-4 py-2 text-sm transition-colors duration-200 -mb-px border-b-2",
+                            key === firstKey
+                                ? "border-[#3EA8FF] text-[#3EA8FF] font-semibold"
+                                : "border-transparent text-gray-500 hover:text-[#3EA8FF]",
+                        )}
                     >
                         {TAB_LABELS[key] ?? key}
                     </button>
@@ -57,7 +65,10 @@ const TAB_LABELS: Record<string, string> = {
 
             {/* タブコンテンツ */}
             {Object.entries(tabItems).map(([key, tabEntries]) => (
-                <div x-show={`activeTab === '${key}'`} x-cloak>
+                <div
+                    data-tab-panel={key}
+                    class={key === firstKey ? "" : "hidden"}
+                >
                     <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
                         {tabEntries.map((item, index) => (
                             <ListCard
@@ -78,7 +89,7 @@ const TAB_LABELS: Record<string, string> = {
             ))}
         </div>
     ) : variant === "list" ? (
-        <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-neutral-700">
+        <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
             {items.map((item, index) => (
                 <ListCard
                     entry={item}
@@ -102,3 +113,40 @@ const TAB_LABELS: Record<string, string> = {
         </div>
     )}
 </section>
+
+<script>
+    function initTabs(container: HTMLElement) {
+        const buttons = container.querySelectorAll<HTMLButtonElement>(
+            "[data-tab-button]",
+        );
+        const panels = container.querySelectorAll<HTMLElement>(
+            "[data-tab-panel]",
+        );
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const key = button.dataset.tabButton;
+
+                buttons.forEach((b) => {
+                    const active = b.dataset.tabButton === key;
+                    b.classList.toggle("border-[#3EA8FF]", active);
+                    b.classList.toggle("text-[#3EA8FF]", active);
+                    b.classList.toggle("font-semibold", active);
+                    b.classList.toggle("border-transparent", !active);
+                    b.classList.toggle("text-gray-500", !active);
+                });
+
+                panels.forEach((panel) => {
+                    panel.classList.toggle(
+                        "hidden",
+                        panel.dataset.tabPanel !== key,
+                    );
+                });
+            });
+        });
+    }
+
+    document
+        .querySelectorAll<HTMLElement>(".js-tabs")
+        .forEach((container) => initTabs(container));
+</script>
