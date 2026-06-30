@@ -30,10 +30,10 @@ const {
 if (!items || items.length === 0) return null;
 
 const TAB_LABELS: Record<string, string> = {
-    diary: "日記",
-    book: "本",
-    game: "ゲーム",
-    english: "英語",
+    diary: "Diary",
+    book: "Book",
+    game: "Game",
+    english: "English",
 };
 ---
 
@@ -58,13 +58,21 @@ const TAB_LABELS: Record<string, string> = {
             {/* タブコンテンツ */}
             {Object.entries(tabItems).map(([key, tabEntries]) => (
                 <div x-show={`activeTab === '${key}'`} x-cloak>
-                    <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-neutral-700">
+                    <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
                         {tabEntries.map((item, index) => (
                             <ListCard
                                 entry={item}
                                 loading={index < eagerLoadCount ? "eager" : "lazy"}
                             />
                         ))}
+                    </div>
+                    <div class="mt-4 text-right">
+                        <a
+                            href={`/${key}`}
+                            class="text-sm text-[#3EA8FF] hover:underline"
+                        >
+                            View all {TAB_LABELS[key] ?? key} →
+                        </a>
                     </div>
                 </div>
             ))}

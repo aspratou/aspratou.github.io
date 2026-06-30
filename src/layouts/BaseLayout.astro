@@ -78,10 +78,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <script is:inline>
             try {
                 const stored = localStorage.getItem("theme");
-                const prefersDark = window.matchMedia(
-                    "(prefers-color-scheme: dark)",
-                ).matches;
-                const isDark = stored ? stored === "dark" : prefersDark;
+                // デフォルトはライトテーマ（OS設定は無視）
+                const isDark = stored === "dark";
                 document.documentElement.classList.toggle("dark", isDark);
             } catch {}
         </script>
@@ -115,7 +113,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </head>
 
     <body
-        class="bg-white text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"
+        class="bg-[#F0F9FF] text-neutral-950 dark:bg-[#1C1C1F] dark:text-[#E5E7EB]"
     >
         <SkipLinkBtn />
 

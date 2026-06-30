@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <header
-    class="sticky top-0 z-60 border-b border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-900"
+    class="sticky top-0 z-60 border-b border-neutral-200 bg-white dark:border-[#2C2C30] dark:bg-[#1C1C1F]"
 >
     <nav class="mx-auto max-w-350 px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
@@ -52,7 +52,7 @@ import { Icon } from "astro-icon/components";
                 <!-- Mobile menu toggle  -->
                 <button
                     type="button"
-                    class="mobile-menu-button relative size-12 hover:text-blue-500 active:scale-95 active:text-blue-500 lg:hidden dark:hover:text-yellow-400 dark:active:text-yellow-400"
+                    class="mobile-menu-button relative size-12 hover:text-[#3EA8FF] active:scale-95 active:text-[#3EA8FF] lg:hidden dark:hover:text-[#3EA8FF] dark:active:text-[#3EA8FF]"
                     aria-controls="mobile-menu"
                     aria-expanded="false"
                 >
@@ -70,7 +70,7 @@ import { Icon } from "astro-icon/components";
             data-state="closed"
         >
             <div
-                class="pointer-events-auto flex flex-col space-y-1 border-b border-neutral-200 bg-white px-2 pt-2 pb-3 lg:hidden dark:border-neutral-700 dark:bg-neutral-900"
+                class="pointer-events-auto flex flex-col space-y-1 border-b border-neutral-200 bg-white px-2 pt-2 pb-3 lg:hidden dark:border-[#2C2C30] dark:bg-[#1C1C1F]"
             >
                 {
                     headerNavLinks.map((item) => (

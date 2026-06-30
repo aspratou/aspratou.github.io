@@ -10,8 +10,8 @@ interface Props {
 const { entry, loading = "lazy" } = Astro.props;
 
 const { collection, id, data, meta } = entry;
-const { title, description, pubDate, updatedDate, image, tags } = data;
-const { readingTimeText } = meta || {};
+const { title, pubDate, updatedDate, image, tags } = data;
+const { readingTimeText, plainText } = meta || {};
 
 const displayDate = updatedDate ?? pubDate;
 ---
@@ -37,7 +37,7 @@ const displayDate = updatedDate ?? pubDate;
             {title}
         </h3>
         <p class="line-clamp-2 text-sm text-gray-500 dark:text-gray-400">
-            {description}
+            {plainText ? plainText.slice(0, 120) : ""}
         </p>
         <div class="flex items-center gap-x-2 text-xs text-gray-500 dark:text-gray-400 mt-1">
             <FormattedDate date={displayDate} />

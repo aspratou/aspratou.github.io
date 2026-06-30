@@ -3,6 +3,9 @@ import { getCollection } from "astro:content";
 import Container from "../components/layouts/Container.astro";
 import ContentGrid from "../components/layouts/sections/ContentGrid.astro";
 import FeaturedContent from "../components/layouts/sections/FeaturedContent.astro";
+import Card from "../components/content/Card.astro";
+import ListCard from "../components/content/ListCard.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
 import EmptyState from "../components/ui/EmptyState.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { attachMeta } from "../utils/meta";
@@ -12,33 +15,37 @@ const allBooks = await getCollection("book", ({ data }) => !data.draft);
 const allGames = await getCollection("game", ({ data }) => !data.draft);
 const allEnglish = await getCollection("english", ({ data }) => !data.draft);
 
-const sortByDate = (arr: typeof allDiaries) =>
-    arr.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortByDate = <T extends { data: { pubDate: Date } }>(arr: T[]) =>
+    [...arr].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const tabItems = {
-    diary: sortByDate(allDiaries).slice(0, 5).map((p) => attachMeta(p)),
-    book: sortByDate(allBooks).slice(0, 5).map((p) => attachMeta(p)),
-    game: sortByDate(allGames).slice(0, 5).map((p) => attachMeta(p)),
-    english: sortByDate(allEnglish).slice(0, 5).map((p) => attachMeta(p)),
-};
-
-// タブ用のitemsはダミーで全件渡す（ContentGrid内ではtabItemsを使う）
-const allItems = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+const allSorted = sortByDate([...allDiaries, ...allBooks, ...allGames, ...allEnglish])
     .map((p) => attachMeta(p));
+
+// Latest Posts: 先頭1件（大カード）＋次の3件（リスト）
+const heroPost = allSorted[0];
+const listPosts = allSorted.slice(1, 4);
+
+// タブ用：各カテゴリ3件
+const tabItems = {
+    diary: sortByDate(allDiaries).slice(0, 3).map((p) => attachMeta(p)),
+    book: sortByDate(allBooks).slice(0, 3).map((p) => attachMeta(p)),
+    game: sortByDate(allGames).slice(0, 3).map((p) => attachMeta(p)),
+    english: sortByDate(allEnglish).slice(0, 3).map((p) => attachMeta(p)),
+};
 
 const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
     .filter((item) => item.data.featured !== undefined)
-    .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0));
+    .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0))
+    .map((p) => attachMeta(p));
 
-const hasContent = featured.length > 0 || allItems.length > 0;
+const hasContent = allSorted.length > 0;
 ---
 
 <BaseLayout
     title="Rato"
     description="社会システムの解説や言語のニュアンス、ゲームメカニクスまで、日々のアウトプットや探求をまとめる個人データベース。"
 >
-    <Container class="space-y-24 py-12">
+    <Container class="space-y-16 py-12">
         {
             hasContent ? (
                 <>
@@ -46,12 +53,33 @@ const hasContent = featured.length > 0 || allItems.length > 0;
                         <FeaturedContent items={featured} />
                     )}
 
-                    {allItems.length > 0 && (
+                    {/* Latest Posts: 左に大カード、右にリスト3件 */}
+                    {heroPost && (
+                        <section>
+                            <SectionHeader
+                                title="Latest Posts"
+                                href="/posts"
+                                viewAllText="View all posts →"
+                            />
+                            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                                {/* 左：大カード */}
+                                <div>
+                                    <Card entry={heroPost} loading="eager" />
+                                </div>
+                                {/* 右：リスト3件 */}
+                                <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
+                                    {listPosts.map((post) => (
+                                        <ListCard entry={post} loading="lazy" />
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    {/* カテゴリ別タブ（タイトル・View allなし、各3件＋カテゴリView all） */}
+                    {allSorted.length > 0 && (
                         <ContentGrid
-                            title="Latest Posts"
-                            href="/posts"
-                            viewAllText="View all posts →"
-                            items={allItems}
+                            items={allSorted}
                             variant="tabs"
                             tabItems={tabItems}
                         />

@@ -1,6 +1,6 @@
 ---
 import { cva, type VariantProps } from "class-variance-authority";
-import type { ContentEntry, ImageLoading } from "../../types";
+import type { ContentEntry, ImageLoading, WithMeta } from "../../types";
 
 const card = cva(
     "relative items-center p-1 flex justify-center overflow-hidden group rounded-xl",
@@ -50,15 +50,16 @@ const textBox = cva(
 );
 
 interface Props extends VariantProps<typeof card> {
-    entry: ContentEntry;
+    entry: WithMeta<ContentEntry>;
     loading?: ImageLoading;
     fetchpriority?: string;
 }
 
 const { entry, size, loading = "lazy" } = Astro.props;
 
-const { collection, id, data } = entry;
-const { title, description, image } = data;
+const { collection, id, data, meta } = entry;
+const { title, image } = data;
+const plainText = meta?.plainText ?? "";
 ---
 
 <a
@@ -83,7 +84,7 @@ const { title, description, image } = data;
 
     <div class={textBox({ size })}>
         <h3 class:list={["line-clamp-1", heading({ size })]}>{title}</h3>
-        <p class:list={text({ size })}>{description}</p>
+        <p class:list={text({ size })}>{plainText ? plainText.slice(0, 120) : ""}</p>
     </div>
 </a>
 

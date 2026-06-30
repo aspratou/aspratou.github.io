@@ -1,9 +1,9 @@
 ---
 import FeaturedCard from "../../content/FeaturedCard.astro";
-import type { ContentEntry } from "../../../types";
+import type { ContentEntry, WithMeta } from "../../../types";
 
 interface Props {
-    items: ContentEntry[];
+    items: WithMeta<ContentEntry>[];
 }
 
 const { items } = Astro.props;
