@@ -1,153 +1,136 @@
 ---
-import Card from "../../content/Card.astro";
-import ListCard from "../../content/ListCard.astro";
-import SectionHeader from "../../ui/SectionHeader.astro";
-import { cn } from "../../../utils/styles";
-import type { ContentEntry, WithMeta } from "../../../types";
+import "../styles/global.css";
+
+import { Font } from "astro:assets";
+import { SITE_SETTINGS } from "../site.config";
+
+import TurnstileController from "../components/integrations/turnstile/TurnstileController.astro";
+import SkipLinkBtn from "../components/ui/SkipLinkBtn.astro";
+import ScrollToTop from "../components/ui/ScrollToTop.astro";
+import Header from "../components/layouts/Header.astro";
+import Footer from "../components/layouts/Footer.astro";
 
 interface Props {
-    items: WithMeta<ContentEntry>[];
-    class?: string;
-    title?: string;
-    href?: string;
-    viewAllText?: string;
-    eagerLoadCount?: number;
-    variant?: "grid" | "list" | "tabs";
-    tabItems?: Record<string, WithMeta<ContentEntry>[]>;
+    title: string;
+    description?: string;
+    ogImage?: string;
 }
 
 const {
-    title,
-    href,
-    viewAllText,
-    items,
-    class: cls,
-    eagerLoadCount = 0,
-    variant = "grid",
-    tabItems,
+    title = SITE_SETTINGS.title,
+    description = SITE_SETTINGS.description,
+    ogImage = SITE_SETTINGS.ogImages,
 } = Astro.props;
-
-if (!items || items.length === 0) return null;
-
-const TAB_LABELS: Record<string, string> = {
-    diary: "Diary",
-    book: "Book",
-    game: "Game",
-    english: "English",
-};
-
-const tabKeys = tabItems ? Object.keys(tabItems) : [];
-const firstKey = tabKeys[0];
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<section>
-    {title && href && <SectionHeader {title} {href} {viewAllText} />}
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        {import.meta.env.PROD && (
+            <meta http-equiv="Content-Security-Policy" content={`default-src 'self'; object-src 'self'; base-uri 'self'; manifest-src 'none'; connect-src 'self' https://challenges.cloudflare.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://ep1.adtrafficquality.google https://*.adtrafficquality.google; img-src 'self' data: https://res.cloudinary.com/dellp9a4z/ https://images-fe.ssl-images-amazon.com https://images-na.ssl-images-amazon.com https://m.media-amazon.com https://i.moshimo.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.gstatic.com https://ep1.adtrafficquality.google https://*.adtrafficquality.google; media-src 'self' https://res.cloudinary.com/dellp9a4z/; font-src 'self' data:; frame-src 'self' https://challenges.cloudflare.com https://www.youtube.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.adtrafficquality.google; worker-src 'self' blob: https://challenges.cloudflare.com; child-src 'self' https://challenges.cloudflare.com blob:; script-src 'self' https://challenges.cloudflare.com blob: https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google 'sha256-+D181lN2Iw1b9lkNhIL2BSfLXvTnxTpdqxKE5OjSgk0=' 'sha256-UnpvhDyF7OXferJXLLEvpK6eSVKujiCxuakCMAAfX0k=' 'sha256-1uLA37rSE279Z3LD4V5UesnNrJXsLL3WlqRDPbR0SiQ=' 'sha256-XOWpFOzUtq3WTcITdHEbeGIbvByWMkUYHPLkeNqUnrg=' 'sha256-O/cT6xyqpBVZwWGYzXVpX7QJEsLa8cqTX0G7ptzRry8=' 'sha256-y8GXDJSth6TkGGn3PesTxxuEoiMEn+PMMT3VzFcGcc8=' 'sha256-BF0290pkb3jxQsE7z00xR8Imp8X34FLC88L0lkMnrGw=' 'sha256-QzWFZi+FLIx23tnm9SBU4aEgx4x8DsuASP07mfqol/c=' 'sha256-0chmwFk0zaA528yFfGV7J9ppIpdfTPPULncDF3WG7Zs=' 'sha256-eIXWvAmxkr251LJZkjniEK5LcPF3NkapbJepohwYRIc=' 'sha256-Q2BPg90ZMplYY+FSdApNErhpWafg2hcRRbndmvxuL/Q=' 'sha256-YvmHN+RLoaKyj0Wvr1lawwJSU85HX9VU+XMIN2yJTdI=' 'sha256-jSFsJYwhDHypqJFbTussDBgVy5SfI7/I1Juw45A85DE=' 'sha256-QRrI35crkGvfyHe4zDJ4r+s9AyoB6wP86lLVZJgBJJk=' 'sha256-rCn5nJyNZtakRTgxqQ4cgq3NnuaXef+t98PEJ4YYIV8=' 'sha256-qKyKPXYQUVHG8qVdVq65o3ZBh2gORQxxyBZCnPbLC6Q=' 'sha256-Nev+qnaUzgEklOr8fi8AeHVoVp1HZ/4yDXJnAlVRD84=' 'sha256-FOIe5+TYAS58fJOf8PhpqMONb6kqs7Mbwrj+cQC6fbg=' 'sha256-5vZcOMPcrS2UFuHvseW+sIklk9YLZUBR613F/GQcBMA=' 'sha256-Im6Okrq6R7vsZdaNPoEmllALWMLy6HhwcKX8/DJjTzQ=' 'sha256-KtgRiB4uwTQhgEAaCq+nAJMhPaSjFqgayM6sHHGVjog='; style-src 'self' 'unsafe-inline';`} />
+        )}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
 
-    {variant === "tabs" && tabItems ? (
-        <div class="js-tabs">
-            {/* タブボタン */}
-            <div class="flex flex-wrap gap-2 mb-6">
-                {tabKeys.map((key) => (
-                    <button
-                        type="button"
-                        data-tab-button={key}
-                        class={cn(
-                            "rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200",
-                            key === firstKey
-                                ? "bg-[#3EA8FF] text-white"
-                                : "bg-[#F0F4F8] text-gray-600 hover:bg-[#E2E8F0] dark:bg-[#2C2C30] dark:text-gray-300 dark:hover:bg-[#37373C]",
-                        )}
-                    >
-                        {TAB_LABELS[key] ?? key}
-                    </button>
-                ))}
-            </div>
+        <Font cssVariable="--font-inter" />
+        <Font cssVariable="--font-jet-brains-mono" />
 
-            {/* タブコンテンツ */}
-            {Object.entries(tabItems).map(([key, tabEntries]) => (
-                <div
-                    data-tab-panel={key}
-                    class={key === firstKey ? "" : "hidden"}
-                >
-                    <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
-                        {tabEntries.map((item, index) => (
-                            <ListCard
-                                entry={item}
-                                loading={index < eagerLoadCount ? "eager" : "lazy"}
-                            />
-                        ))}
-                    </div>
-                    <div class="mt-4 text-right">
-                        <a
-                            href={`/${key}`}
-                            class="text-sm text-[#3EA8FF] hover:underline"
-                        >
-                            View all {TAB_LABELS[key] ?? key} →
-                        </a>
-                    </div>
-                </div>
-            ))}
-        </div>
-    ) : variant === "list" ? (
-        <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
-            {items.map((item, index) => (
-                <ListCard
-                    entry={item}
-                    loading={index < eagerLoadCount ? "eager" : "lazy"}
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        {
+            ogImage && (
+                <meta
+                    property="og:image"
+                    content={new URL(ogImage, Astro.url)}
                 />
-            ))}
-        </div>
-    ) : (
+            )
+        }
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        {
+            ogImage && (
+                <meta
+                    name="twitter:image"
+                    content={new URL(ogImage, Astro.url)}
+                />
+            )
+        }
+
+        <link rel="sitemap" href="sitemap-index.xml" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS"
+            href="rss.xml"
+        />
+
+        <script is:inline>
+            try {
+                const stored = localStorage.getItem("theme");
+                // デフォルトはライトテーマ（OS設定は無視）
+                const isDark = stored === "dark";
+                document.documentElement.classList.toggle("dark", isDark);
+            } catch {}
+        </script>
+
+        <TurnstileController />
+
+        <script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileAPILoad"
+            defer
+            referrerpolicy="origin"
+            crossorigin="anonymous"></script>
+
+        <script src="../utils/overlay.ts"></script>
+
+        <meta name="google-site-verification" content="nxCYP2ieh7lmr3cZhQDHm03_bH9Or3al_Zk6Z3G5Ing" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-ZJF7V1KPCE');
+        </script>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638935293920729"
+     crossorigin="anonymous"></script>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <style>[x-cloak] { display: none !important; }</style>
+
+    </head>
+
+    <body
+        class="bg-[#F0F9FF] text-neutral-950 dark:bg-[#1C1C1F] dark:text-[#E5E7EB]"
+    >
+        <SkipLinkBtn />
+
+        <Header />
+
+        <main id="main" class="min-h-[calc(100vh-12rem)]">
+            <slot />
+        </main>
+
+        <Footer />
+
         <div
-            class={cn(
-                "grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3",
-                cls,
-            )}
+            id="overlay"
+            class="pointer-events-none invisible fixed inset-0 z-40 bg-black/50 opacity-0 transition-all duration-500"
         >
-            {items.map((item, index) => (
-                <Card
-                    entry={item}
-                    loading={index < eagerLoadCount ? "eager" : "lazy"}
-                />
-            ))}
         </div>
-    )}
-</section>
 
-<script>
-    function initTabs(container: HTMLElement) {
-        const buttons = container.querySelectorAll<HTMLButtonElement>(
-            "[data-tab-button]",
-        );
-        const panels = container.querySelectorAll<HTMLElement>(
-            "[data-tab-panel]",
-        );
-
-        buttons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const key = button.dataset.tabButton;
-
-                buttons.forEach((b) => {
-                    const active = b.dataset.tabButton === key;
-                    b.classList.toggle("bg-[#3EA8FF]", active);
-                    b.classList.toggle("text-white", active);
-                    b.classList.toggle("bg-[#F0F4F8]", !active);
-                    b.classList.toggle("text-gray-600", !active);
-                    b.classList.toggle("dark:bg-[#2C2C30]", !active);
-                    b.classList.toggle("dark:text-gray-300", !active);
-                });
-
-                panels.forEach((panel) => {
-                    panel.classList.toggle(
-                        "hidden",
-                        panel.dataset.tabPanel !== key,
-                    );
-                });
-            });
-        });
-    }
-
-    document
-        .querySelectorAll<HTMLElement>(".js-tabs")
-        .forEach((container) => initTabs(container));
-</script>
+        <ScrollToTop />
+    </body>
+</html>
