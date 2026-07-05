@@ -95,4 +95,8 @@ export const collections = {
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/english" }),
     schema: projectSchema, 
   }),
+  mmd: defineCollection({
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/mmd" }),
+    schema: projectSchema,
+  }),
 };

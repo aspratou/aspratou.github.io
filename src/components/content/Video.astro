@@ -1,0 +1,39 @@
+---
+interface Props {
+    src: string;       // 例: /videos/mmd/dance.mp4
+    title?: string;
+    poster?: string;   // サムネイル画像のパス（省略可）
+    autoplay?: boolean;
+    loop?: boolean;
+    muted?: boolean;
+}
+
+const {
+    src,
+    title,
+    poster,
+    autoplay = false,
+    loop = false,
+    muted = false,
+} = Astro.props;
+---
+
+<figure class="my-6">
+    <video
+        src={src}
+        poster={poster}
+        controls
+        autoplay={autoplay || undefined}
+        loop={loop || undefined}
+        muted={(muted || autoplay) || undefined}
+        playsinline
+        class="w-full rounded-lg shadow-md"
+    >
+        お使いのブラウザは動画再生に対応していません。
+    </video>
+    {title && (
+        <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">
+            {title}
+        </figcaption>
+    )}
+</figure>

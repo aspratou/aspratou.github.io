@@ -32,20 +32,24 @@ export const SITE_SETTINGS = {
 
 export const header = [
   {
-    name: "Game",
-    url: "/game",
+    name: "Diary",
+    url: "/diary",
   },
   {
     name: "Book",
     url: "/book",
   },
   {
+    name: "Game",
+    url: "/game",
+  },
+  {
     name: "English",
     url: "/english",
   },
   {
-    name: "Diary",
-    url: "/diary",
+    name: "MMD",
+    url: "/mmd",
   },
   {
     name: "Contact",
@@ -62,20 +66,24 @@ export const footer = [
     title: "Content", // 💡 メインのナビゲーション
     links: [
       {
-        name: "Game",
-        url: "/Game",
+        name: "Diary",
+        url: "/diary",
       },
       {
         name: "Book",
         url: "/book",
       },
       {
+        name: "Game",
+        url: "/game",
+      },
+      {
         name: "English",
         url: "/english",
       },
-     {
-        name: "Diary",
-        url: "/diary",
+      {
+        name: "MMD",
+        url: "/mmd",
       },
     ],
   },

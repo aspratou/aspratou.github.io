@@ -14,11 +14,12 @@ const allDiaries = await getCollection("diary", ({ data }) => !data.draft);
 const allBooks = await getCollection("book", ({ data }) => !data.draft);
 const allGames = await getCollection("game", ({ data }) => !data.draft);
 const allEnglish = await getCollection("english", ({ data }) => !data.draft);
+const allMmd = await getCollection("mmd", ({ data }) => !data.draft);
 
 const sortByDate = <T extends { data: { pubDate: Date } }>(arr: T[]) =>
     [...arr].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const allSorted = sortByDate([...allDiaries, ...allBooks, ...allGames, ...allEnglish])
+const allSorted = sortByDate([...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allMmd])
     .map((p) => attachMeta(p));
 
 // Latest Posts: 先頭1件（大カード）＋次の3件（リスト）
@@ -31,9 +32,10 @@ const tabItems = {
     book: sortByDate(allBooks).slice(0, 3).map((p) => attachMeta(p)),
     game: sortByDate(allGames).slice(0, 3).map((p) => attachMeta(p)),
     english: sortByDate(allEnglish).slice(0, 3).map((p) => attachMeta(p)),
+    mmd: sortByDate(allMmd).slice(0, 3).map((p) => attachMeta(p)),
 };
 
-const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish]
+const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allMmd]
     .filter((item) => item.data.featured !== undefined)
     .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0))
     .map((p) => attachMeta(p));
