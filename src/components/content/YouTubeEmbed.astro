@@ -1,0 +1,26 @@
+---
+interface Props {
+    id: string;      // YouTubeの動画ID（例: dQw4w9WgXcQ）
+    title?: string;  // アクセシビリティ用のタイトル
+}
+
+const { id, title = "YouTube動画" } = Astro.props;
+---
+
+<figure class="my-6">
+    <div class="relative aspect-video w-full overflow-hidden rounded-lg shadow-md">
+        <iframe
+            src={`https://www.youtube.com/embed/${id}`}
+            {title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            class="absolute inset-0 h-full w-full"
+        ></iframe>
+    </div>
+    {title && title !== "YouTube動画" && (
+        <figcaption class="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">
+            {title}
+        </figcaption>
+    )}
+</figure>
