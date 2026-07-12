@@ -1,6 +1,6 @@
 export const SITE_SETTINGS = {
   title: "Rato", // ブログのタイトル
-  description: "日々のアウトプットや探求をまとめる個人データベース", // 検索結果に表示される説明文
+  description: "日々のアウトプットや取り組みをまとめる個人データベース", // 検索結果に表示される説明文
   owner: "Rato", // サイトの所有者名
   googleAnalyticsId: "G-ZJF7V1KPCE", 
   googleSiteVerification: "nxCYP2ieh7lmr3cZhQDHm03_bH9Or3al_Zk6Z3G5Ing", 
@@ -19,12 +19,6 @@ export const SITE_SETTINGS = {
       label: "YouTube",
       url: "https://youtube.com/", // チャンネルのURLを入れる
       handle: "YouTube Channel",
-    },
-    {
-      icon: "instagram",
-      label: "Instagram",
-      url: "https://instagram.com/", // チャンネルのURLを入れる
-      handle: "Instagram",
     },
   ],
 };
@@ -114,10 +108,6 @@ export const footer = [
       {
         name: "YouTube",
         url: "https://www.youtube.com/@genshin_english", // 後ほど実際のURLに差し替え可能です
-      },
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/rato.dance/", // 💡 あなたのインスタのアカウントURLに書き換えてください
       },
     ],
   },
