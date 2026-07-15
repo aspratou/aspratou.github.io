@@ -5,7 +5,7 @@ export const SITE_SETTINGS = {
   googleAnalyticsId: "G-ZJF7V1KPCE", 
   googleSiteVerification: "nxCYP2ieh7lmr3cZhQDHm03_bH9Or3al_Zk6Z3G5Ing", 
   ogImages:
-    "https://res.cloudinary.com/dellp9a4z/image/upload/v1756758385/og-home_ejuqq8.png", // ※後日、自分の画像URLに変更できます
+    "/images/thumbnail/362059.jpg", // プレビューサムネ
   socials: [
     {
       icon: "github",

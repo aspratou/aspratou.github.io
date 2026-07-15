@@ -1,5 +1,4 @@
 ---
-featured: '3'
 title: "全人類の教養大全１"
 description: "ここ最近で一番面白くて一番ためになった本"
 pubDate: 2026-06-23
