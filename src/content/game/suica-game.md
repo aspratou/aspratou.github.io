@@ -5,7 +5,7 @@ pubDate: 2026-06-10
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]
-tags: ["game", "switch"]
+tags: ["game"]
 image:
   src: "/images/game/banner_0.jpg"
   alt: "カバー画像"

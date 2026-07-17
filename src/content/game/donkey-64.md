@@ -5,7 +5,7 @@ pubDate: 2026-07-08
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]
-tags: ["game", "switch"]
+tags: ["game"]
 image:
   src: "/images/game/donkeykong64.webp"
   alt: "カバー画像"

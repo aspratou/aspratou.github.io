@@ -5,7 +5,7 @@ pubDate: 2026-07-14
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]
-tags: ["game", "mobile", "pc"]
+tags: ["game"]
 image:
   src: "/images/game/SVWBランク.png"
   alt: "カバー画像"

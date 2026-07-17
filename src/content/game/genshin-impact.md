@@ -5,7 +5,7 @@ pubDate: 2026-06-24
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]
-tags: ["game", "pc"]
+tags: ["game"]
 image:
   src: "/images/game/2021021012571650539.jpg"
   alt: "カバー画像"
