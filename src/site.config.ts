@@ -13,7 +13,6 @@ export const SITE_SETTINGS = {
       url: "https://github.com/aspratou", // あなたのGitHub URL
       handle: "aspratou",
     },
-    // 👇 YouTubeチャンネルへのリンクなど、必要に応じて追加・変更できます
     {
       icon: "youtube",
       label: "YouTube",
