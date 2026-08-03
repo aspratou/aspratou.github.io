@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "遠藤研一郎"
+rating: 2
 image:
   src: "/images/book/911TmO1LEQL._SL1500_.jpg"
   alt: "カバー画像"

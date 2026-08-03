@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "左巻 健男"
+rating: 1
 image:
   src: "/images/book/71v-ZUY0HSL._SL1469_.jpg"
   alt: "カバー画像"

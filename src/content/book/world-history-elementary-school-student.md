@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "ぴよぴーよ速報"
+rating: 4
 image:
   src: "/images/book/71RCEZJioPL._SL1500_.jpg"
   alt: "カバー画像"

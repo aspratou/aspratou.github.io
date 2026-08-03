@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Container from "../../../components/layouts/Container.astro";
+---
+
+<BaseLayout
+    title="aspratou.github.io"
+    description="このサイト自体の構成・ドキュメント"
+>
+    <Container class="py-12 max-w-3xl">
+        <div class="mb-2">
+            <a href="/" class="text-sm text-[#3EA8FF] hover:underline">← Home</a>
+        </div>
+
+        <h1 class="mb-2 text-3xl font-bold">aspratou.github.io</h1>
+        <span class="inline-block rounded-full bg-[#3EA8FF]/10 px-3 py-1 text-sm text-[#3EA8FF] mb-8">
+            公開中
+        </span>
+
+        <section class="mb-10">
+            <h2 class="mb-3 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2">概要</h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Astro製の個人サイト。日記・本・ゲーム・英語・アプリ制作の記録をまとめる個人データベース。
+                GitHub Pagesでホスティング。
+            </p>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="mb-3 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2">技術スタック</h2>
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                <li>フレームワーク: Astro（Basic Blogテンプレートベース）</li>
+                <li>スタイリング: Tailwind CSS</li>
+                <li>ホスティング: GitHub Pages</li>
+                <li>画像: Cloudinary</li>
+                <li>コンテンツ: diary / book / game / english / apps</li>
+            </ul>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="mb-3 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2">リンク</h2>
+            <div class="flex flex-col gap-2">
+                <a
+                    href="https://aspratou.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[#3EA8FF] hover:underline text-sm"
+                >
+                    サイトを見る →
+                </a>
+                <a
+                    href="https://github.com/aspratou/aspratou.github.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[#3EA8FF] hover:underline text-sm"
+                >
+                    GitHub →
+                </a>
+            </div>
+        </section>
+
+        </Container>
+</BaseLayout>

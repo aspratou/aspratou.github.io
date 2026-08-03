@@ -27,7 +27,7 @@ const licenses = defineCollection({
     name: z.string().min(1, { message: "License Name cannot be empty." }),
     description: z.string().optional(),
     url: z.string().url(),
-    type: z.enum(["post", "project", "book", "game", "english"]),
+    type: z.string(),
   }),
 });
 
@@ -59,6 +59,11 @@ const projectSchema = baseSchema.extend({
     .default("completed"),
 });
 
+const bookSchema = projectSchema.extend({
+  bookAuthor: z.string().min(1, { message: "Book author cannot be empty." }),
+  rating: z.number().min(1).max(5),
+});
+
 const legal = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/legal" }),
   schema: z.object({
@@ -85,7 +90,7 @@ export const collections = {
   about,
   book: defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/book" }),
-    schema: projectSchema, 
+    schema: bookSchema,
   }),
   game: defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/game" }),
@@ -95,8 +100,8 @@ export const collections = {
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/english" }),
     schema: projectSchema, 
   }),
-  mmd: defineCollection({
-    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/mmd" }),
+  apps: defineCollection({
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/apps" }),
     schema: projectSchema,
   }),
 };

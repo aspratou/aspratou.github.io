@@ -7,9 +7,9 @@ const allDiaries = await getCollection("diary", ({ data }) => !data.draft);
 const allBooks = await getCollection("book", ({ data }) => !data.draft);
 const allGames = await getCollection("game", ({ data }) => !data.draft);
 const allEnglish = await getCollection("english", ({ data }) => !data.draft);
-const allMmd = await getCollection("mmd", ({ data }) => !data.draft);
+const allApps = await getCollection("apps", ({ data }) => !data.draft);
 
-const posts = [...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allMmd]
+const posts = [...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allApps]
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .map((p) => attachMeta(p));
 ---

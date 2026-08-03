@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "旦英夫"
+rating: 5
 image:
   src: "/images/book/81e139KneRL._SL1500_.jpg"
   alt: "カバー画像"

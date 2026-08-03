@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "井田 仁康(監修)"
+rating: 3
 image:
   src: "/images/book/81nUh4KWaaL._SL1500_.jpg"
   alt: "カバー画像"

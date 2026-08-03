@@ -1,0 +1,418 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Container from "../../../components/layouts/Container.astro";
+---
+
+<BaseLayout
+    title="Lingoop"
+    description="AI との英会話を通じて実用的な英語表現を身につけるモバイルアプリ"
+>
+    <Container class="py-12 max-w-4xl">
+        <div class="mb-6">
+            <a href="/" class="text-sm text-[#3EA8FF] hover:underline">← Home</a>
+        </div>
+
+        <div class="mb-8">
+            <h1 class="mb-2 text-3xl font-bold">Lingoop</h1>
+            <p class="text-gray-500 dark:text-gray-400 mb-3">
+                lingo（言葉）＋ loop（循環）— 話す → フィードバック → 集める → 思い出す、という循環で「話しっぱなしで終わらない」英会話学習アプリ
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="rounded-full bg-[#3EA8FF]/10 px-3 py-1 text-sm text-[#3EA8FF]">制作中</span>
+                <span class="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600 dark:bg-[#2C2C30] dark:text-gray-300">iOS</span>
+                <span class="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600 dark:bg-[#2C2C30] dark:text-gray-300">React + Capacitor</span>
+                <span class="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-600 dark:bg-[#2C2C30] dark:text-gray-300">Cloudflare Workers</span>
+            </div>
+
+            {/* 入手方法 */}
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="rounded-xl border border-[#E2E8F0] dark:border-[#2C2C30] bg-white dark:bg-[#242428] p-4">
+                    <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Web版</h3>
+                    <a
+                        href="https://eikaiwa-app.pages.dev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-[#3EA8FF] hover:underline text-sm break-all"
+                    >
+                        https://eikaiwa-app.pages.dev/
+                    </a>
+                </div>
+                <div class="rounded-xl border border-[#E2E8F0] dark:border-[#2C2C30] bg-white dark:bg-[#242428] p-4">
+                    <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">iPhone アプリ</h3>
+                    <span class="inline-block rounded-full bg-gray-100 dark:bg-[#2C2C30] px-3 py-1 text-sm text-gray-500 dark:text-gray-400">TBD</span>
+                </div>
+            </div>
+        </div>
+
+        {/* タブ */}
+        <div class="js-tabs-eikaiwa">
+            <div class="flex flex-wrap gap-2 mb-8">
+                <button type="button" data-etab="readme"
+                    class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 bg-[#3EA8FF] text-white">
+                    README
+                </button>
+                <button type="button" data-etab="prd"
+                    class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 bg-[#F0F4F8] text-gray-600 hover:bg-[#E2E8F0] dark:bg-[#2C2C30] dark:text-gray-300">
+                    PRD
+                </button>
+                <button type="button" data-etab="tech"
+                    class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 bg-[#F0F4F8] text-gray-600 hover:bg-[#E2E8F0] dark:bg-[#2C2C30] dark:text-gray-300">
+                    技術仕様
+                </button>
+            </div>
+
+            {/* README */}
+            <div data-epanel="readme">
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">プロジェクト構成</h2>
+                    <pre class="bg-gray-50 dark:bg-[#242428] rounded-lg p-4 text-sm overflow-x-auto text-gray-700 dark:text-gray-300"><code>eikaiwa-app/
+├── eikaiwa-app-server/          # バックエンド（Cloudflare Workers）
+│   └── src/
+│       ├── index.ts             # 全エンドポイントとルーティング
+│       ├── auth.ts              # 認証・セッション
+│       ├── topicGenerator.ts    # トピック生成
+│       ├── chatReply.ts         # 会話の返答生成
+│       ├── reviewGenerator.ts   # フィードバック生成
+│       ├── phraseExplainer.ts   # フレーズ解説生成
+│       ├── missionCatalog.ts    # ミッション定義（48件）
+│       ├── phraseCardCatalog.ts # 表現カード定義（58件）
+│       ├── dailyCatalog.ts      # デイリークエスト定義
+│       ├── progress.ts          # レベル・経験値の計算
+│       └── workersAi.ts         # AI 呼び出しの共通処理
+│
+└── eikaiwa-app-starter/
+    └── eikaiwa-app/             # フロントエンド（React + Capacitor）
+        ├── src/
+        │   ├── screens/         # 各画面
+        │   ├── components/      # 共通コンポーネント
+        │   ├── i18n/            # 日本語・英語の翻訳
+        │   ├── apiClient.ts     # サーバー通信
+        │   ├── VrmViewer.tsx    # 3D モデル表示
+        │   └── characterCatalog.ts
+        ├── public/              # VRM モデル、アイコン
+        └── ios-patch/           # ★ 初回のみ Xcode に手動追加が必要</code></pre>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">クイックスタート</h2>
+                    <h3 class="mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">開発</h3>
+                    <pre class="bg-gray-50 dark:bg-[#242428] rounded-lg p-4 text-sm overflow-x-auto text-gray-700 dark:text-gray-300"><code># サーバー
+cd eikaiwa-app-server && npm install && npx wrangler dev
+
+# フロントエンド
+cd eikaiwa-app-starter/eikaiwa-app && npm install && npm run dev</code></pre>
+                    <h3 class="mt-4 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">デプロイ</h3>
+                    <pre class="bg-gray-50 dark:bg-[#242428] rounded-lg p-4 text-sm overflow-x-auto text-gray-700 dark:text-gray-300"><code># サーバー
+cd eikaiwa-app-server && npx wrangler deploy
+
+# Web版
+cd eikaiwa-app-starter/eikaiwa-app
+npm run build && npx wrangler pages deploy dist --project-name=eikaiwa-app</code></pre>
+                    <h3 class="mt-4 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">iOS 実機（要 Mac）</h3>
+                    <pre class="bg-gray-50 dark:bg-[#242428] rounded-lg p-4 text-sm overflow-x-auto text-gray-700 dark:text-gray-300"><code>cd eikaiwa-app-starter/eikaiwa-app
+npm install && npm run build
+npx cap sync ios && npx cap open ios</code></pre>
+                    <p class="mt-2 text-sm text-amber-600 dark:text-amber-400">⚠️ 初回のみ: ios-patch/README.md の手順に従って AudioSessionPlugin.swift を Xcode に追加すること</p>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">重要な制約</h2>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>完全無料枠で運用中。Workers AI は1日10,000ニューロン（アカウント全体で共有）</li>
+                        <li>無料 Apple ID の署名は7日で失効。継続利用には再インストールが必要</li>
+                        <li>キャラクターモデルは公開前にライセンス確認が必要（特に初音ミク系）</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">設定値の変更箇所</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">ゲーム設計の数値を変えるときはサーバー・クライアント両方を直す必要がある</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">値</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">サーバー</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">クライアント</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">レベルアップ必要 exp</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">progress.ts</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">screens/Home.tsx</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">ミッション報酬 exp</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">index.ts</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">screens/Missions.tsx</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">ステージクリア報酬</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">index.ts</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">screens/Missions.tsx</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">レベルアップ報酬コイン</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">index.ts</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">screens/Review.tsx</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            {/* PRD */}
+            <div data-epanel="prd" class="hidden">
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">概要</h2>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                        AI との英会話を通じて実用的な英語表現を身につけるモバイルアプリ。「話して終わり」になりがちな英会話アプリに対し、<strong>話す → フィードバック → 表現を集める → 間隔をあけて思い出す</strong>という循環を設計の中心に据えている。
+                    </p>
+                    <h3 class="mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">解決する課題</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">課題</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">解決策</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">練習相手がいない／心理的ハードルが高い</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">AI キャラクターが相手。何度間違えても気にならない</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">話しっぱなしで身につかない</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">会話後にフィードバック、指摘された表現を保存できる</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">覚えた表現をすぐ忘れる</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">SRS（間隔反復）で忘れる前に復習を促す</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">何を話せばいいか分からない</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">興味のあるジャンルから毎日トピックを自動生成</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">続かない</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">連続日数、デイリークエスト、ミッション、表現カード収集</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">ターゲットユーザー</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                        <li>英語学習を続けたいが、教室に通うほどではない社会人</li>
+                        <li>想定レベル: 初級〜上級（アプリ内で3段階を選択）</li>
+                        <li>利用シーン: 通勤中、寝る前などのスキマ時間（1回5〜15分）</li>
+                    </ul>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">コア学習体験</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {[
+                            { num: "①", title: "会話", desc: "毎日自動生成されるトピックについてAIキャラクターと英語で会話。音声入力またはテキスト入力。1回の目標は「5回発言」。" },
+                            { num: "②", title: "フィードバック", desc: "会話終了後、自分の発話に対する「より自然な言い回し」をAIが提案。各提案に理由が日本語で付く。" },
+                            { num: "③", title: "表現を集める", desc: "表現カード（58種類）・ミッション（48種類）・今日のチャレンジで、応用が効く構文パターンを収集。" },
+                            { num: "④", title: "復習（SRS）", desc: "1日→3日→1週間→2週間→1ヶ月→2ヶ月の間隔反復。正解すると間隔が伸び、間違えると翌日に戻る。" },
+                        ].map((item) => (
+                            <div class="rounded-lg border border-[#E2E8F0] dark:border-[#2C2C30] p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-[#3EA8FF] font-bold">{item.num}</span>
+                                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">{item.title}</h3>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">育成・報酬</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">項目</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">数値</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">レベルアップに必要な経験値</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">50 exp</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">会話の発話</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">5 exp / 回</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">ミッション達成</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">20 exp + コイン1枚</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">ステージクリア</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">コイン5枚 + アチーブメント</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">レベルアップ</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">コイン8枚</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">今日のチャレンジ達成</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">コイン3枚</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">復習1問</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">3 exp</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">カード抽選</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">コイン5枚（1日1回は無料）</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">今後の課題</h2>
+                    <h3 class="mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">App Store 公開に必要なもの</h3>
+                    <ul class="list-none space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>☐ Apple Developer Program 登録（$99/年）</li>
+                        <li>☐ プライバシーマニフェスト（PrivacyInfo.xcprivacy）</li>
+                        <li>☐ スクリーンショット、アプリ説明文</li>
+                        <li>☐ 審査用デモアカウントの用意</li>
+                        <li>☐ キャラクターモデルのライセンス確認（特に初音ミク系）</li>
+                    </ul>
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">既知の制約</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">項目</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">内容</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">読み上げの抑揚</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">iOS 標準音声のため機械的。改善には有料サービスが必要</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">モデルの身振り</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">内容に応じたジェスチャーは未実装</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">多言語化</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">ミッション説明文・トピックは日本語のみ</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">無料枠の上限</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">利用者が増えると1日10,000ニューロンでは不足する可能性</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">署名の有効期限</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">無料 Apple ID のため7日で失効</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            {/* 技術仕様 */}
+            <div data-epanel="tech" class="hidden">
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">システム構成</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">対象</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">URL / プロジェクト名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">バックエンド</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">https://eikaiwa-app-server.aspratou.workers.dev</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">フロントエンド（Web）</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">https://eikaiwa-app.pages.dev</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">Pages プロジェクト名</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">eikaiwa-app</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">Workers プロジェクト名</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">eikaiwa-app-server</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">技術スタック</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="rounded-lg border border-[#E2E8F0] dark:border-[#2C2C30] p-4">
+                            <h4 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">フロントエンド</h4>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                <li>Vite + React + TypeScript</li>
+                                <li>three.js + @pixiv/three-vrm（VRM表示）</li>
+                                <li>Capacitor 8（iOS ネイティブ化）</li>
+                                <li>HashRouter（Capacitor の file:// 対応）</li>
+                            </ul>
+                        </div>
+                        <div class="rounded-lg border border-[#E2E8F0] dark:border-[#2C2C30] p-4">
+                            <h4 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">バックエンド</h4>
+                            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                                <li>Cloudflare Workers</li>
+                                <li>Workers AI: llama-3.1-8b-instruct-fp8</li>
+                                <li>KV Namespace × 4</li>
+                                <li>Resend（パスワード再設定メール）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">データ設計（KV Namespace）</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">Namespace</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">用途</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">USERS_KV</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">学習プロフィール</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">TOPICS_KV</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">今日のトピック、生成履歴</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">PROGRESS_KV</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">進捗、ミッション、カード、SRS 等</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">AUTH_KV</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">認証情報、セッション</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">AI 呼び出しの設計</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">用途</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">頻度</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">コスト対策</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">トピック生成</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">1日1回 + 任意の再生成</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">キャッシュ、ヒントも同時生成</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">会話の返答</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">発話ごと</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">履歴は直近8ターンのみ送信</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">フィードバック</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">会話終了時に1回</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">—</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">フレーズ解説</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">カードごとに初回1回のみ</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">全ユーザー共有キャッシュ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">トラブルシューティング</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">症状</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">原因と対処</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">Permission denied（Mac）</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">zip 解凍で実行権限が落ちている。chmod -R +x node_modules/.bin</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">process.cwd failed</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">ターミナルがフォルダを見失っている。cd ~ してから入り直す</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top font-mono text-xs">Missing package product</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">npx cap sync ios 後、Xcode で File → Packages → Reset Package Caches</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">CORS エラー</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">index.ts の ALLOWED_ORIGINS に該当オリジンを追加</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">通知マークが消えない</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">カタログ変更で古い ID が残存。サーバー側で実在 ID のみ返すよう対処済み</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">主要な設計判断</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-[#242428]">
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">判断</th>
+                                    <th class="text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-semibold border border-[#E2E8F0] dark:border-[#2C2C30]">理由</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">Workers AI の小型モデルを採用</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">無料枠内で運用するため。品質より継続性を優先</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">SRS・ミッション判定に AI を使わない</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">静的カタログと文字列一致で十分。AI コストを会話に集中</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">フレーズ解説を全ユーザー共有キャッシュ</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">内容がユーザーに依存しないため。1フレーズ1回だけの生成</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">表現カードを構文パターンに変更</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">完成文より応用が効くパターンの方が学習効率が高い</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">キャラクターとの関係性要素を不採用</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">「推し活で学習が継続するとは思わない」というオーナー判断</td></tr>
+                                <tr><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">進捗をキャラクター共通に</td><td class="px-3 py-2 text-gray-600 dark:text-gray-400 border border-[#E2E8F0] dark:border-[#2C2C30] align-top">モデルは見た目の設定。切り替えでレベルが戻るのを避けるため</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </Container>
+</BaseLayout>
+
+
+<script>
+    const container = document.querySelector(".js-tabs-eikaiwa");
+    if (container) {
+        const buttons = container.querySelectorAll("[data-etab]");
+        const panels = container.querySelectorAll("[data-epanel]");
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const key = (button as HTMLElement).dataset.etab;
+
+                buttons.forEach((b) => {
+                    const el = b as HTMLElement;
+                    const active = el.dataset.etab === key;
+                    el.classList.toggle("bg-[#3EA8FF]", active);
+                    el.classList.toggle("text-white", active);
+                    el.classList.toggle("bg-[#F0F4F8]", !active);
+                    el.classList.toggle("text-gray-600", !active);
+                    el.classList.toggle("dark:bg-[#2C2C30]", !active);
+                    el.classList.toggle("dark:text-gray-300", !active);
+                });
+
+                panels.forEach((panel) => {
+                    const el = panel as HTMLElement;
+                    el.classList.toggle("hidden", el.dataset.epanel !== key);
+                });
+            });
+        });
+    }
+</script>

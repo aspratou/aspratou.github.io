@@ -1,27 +1,32 @@
 export const SITE_SETTINGS = {
-  title: "Rato", // ブログのタイトル
-  description: "日々のアウトプットや取り組みをまとめる個人データベース", // 検索結果に表示される説明文
-  owner: "Rato", // サイトの所有者名
-  googleAnalyticsId: "G-ZJF7V1KPCE", 
-  googleSiteVerification: "nxCYP2ieh7lmr3cZhQDHm03_bH9Or3al_Zk6Z3G5Ing", 
+  title: "Rato",
+  description: "日々のアウトプットや探求をまとめる個人データベース",
+  owner: "Rato",
+  googleAnalyticsId: "G-ZJF7V1KPCE",
+  googleSiteVerification: "nxCYP2ieh7lmr3cZhQDHm03_bH9Or3al_Zk6Z3G5Ing",
   ogImages:
-    "/images/thumbnail/362059.jpg", // プレビューサムネ
+    "https://res.cloudinary.com/dellp9a4z/image/upload/v1756758385/og-home_ejuqq8.png",
   socials: [
     {
       icon: "github",
       label: "GitHub",
-      url: "https://github.com/aspratou", // あなたのGitHub URL
+      url: "https://github.com/aspratou",
       handle: "aspratou",
     },
     {
       icon: "youtube",
       label: "YouTube",
-      url: "https://youtube.com/", // チャンネルのURLを入れる
+      url: "https://youtube.com/",
       handle: "YouTube Channel",
+    },
+    {
+      icon: "instagram",
+      label: "Instagram",
+      url: "https://instagram.com/",
+      handle: "Instagram",
     },
   ],
 };
-
 
 export const header = [
   {
@@ -41,8 +46,8 @@ export const header = [
     url: "/english",
   },
   {
-    name: "MMD",
-    url: "/mmd",
+    name: "Apps",
+    url: "/apps",
   },
   {
     name: "Contact",
@@ -56,7 +61,7 @@ export const header = [
 
 export const footer = [
   {
-    title: "Content", // 💡 メインのナビゲーション
+    title: "Content",
     links: [
       {
         name: "Diary",
@@ -75,13 +80,13 @@ export const footer = [
         url: "/english",
       },
       {
-        name: "MMD",
-        url: "/mmd",
+        name: "Apps",
+        url: "/apps",
       },
     ],
   },
   {
-    title: "Legal", // 💡 Resourcesから「Legal」に変更し、お気に入りの位置を維持
+    title: "Legal",
     links: [
       {
         name: "Contact",
@@ -89,16 +94,16 @@ export const footer = [
       },
       {
         name: "Privacy Policy",
-        url: "/legal/privacy-policy", // テンプレート内のプライバシーポリシーのURL
+        url: "/legal/privacy-policy",
       },
       {
-        name: "Terms of Service", // 💡 新しくここに並びとして追加
-        url: "/legal/terms-of-service", // テンプレート内の利用規約のURL
+        name: "Terms of Service",
+        url: "/legal/terms-of-service",
       },
     ],
   },
   {
-    title: "Links", // 💡 3列目（右側）に新設
+    title: "Links",
     links: [
       {
         name: "GitHub",
@@ -106,7 +111,15 @@ export const footer = [
       },
       {
         name: "YouTube",
-        url: "https://www.youtube.com/@genshin_english", // 後ほど実際のURLに差し替え可能です
+        url: "https://www.youtube.com/@genshin_english",
+      },
+      {
+        name: "Instagram",
+        url: "https://www.instagram.com/rato.dance/",
+      },
+      {
+        name: "Site Docs",
+        url: "/apps/aspratou-site",
       },
     ],
   },

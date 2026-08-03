@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "水野 太貴"
+rating: 3
 image:
   src: "/images/book/710AGN-gqSL._SL1500_.jpg"
   alt: "カバー画像"

@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "アンディ・ウィアー"
+rating: 5
 image:
   src: "/images/book/61KNqlUzmIL._SL1500_.jpg"
   alt: "カバー画像"

@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "チェ・ソンホ"
+rating: 5
 image:
   src: "/images/book/81knEdG2SmL._SL1500_.jpg"
   alt: "カバー画像"

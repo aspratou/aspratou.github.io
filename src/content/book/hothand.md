@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "ベン・コーエン"
+rating: 2
 image:
   src: "/images/book/71XR1fd4M5L._SL1500_.jpg"
   alt: "カバー画像"

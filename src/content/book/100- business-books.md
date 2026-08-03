@@ -6,6 +6,8 @@ draft: false
 license: "all-rights-reserved"
 categories: ["book"]
 tags: ["book"]
+bookAuthor: "堀元 見"
+rating: 2
 image:
   src: "/images/book/61P7adutk2L._SL1200_.jpg"
   alt: "カバー画像"

@@ -14,28 +14,26 @@ const allDiaries = await getCollection("diary", ({ data }) => !data.draft);
 const allBooks = await getCollection("book", ({ data }) => !data.draft);
 const allGames = await getCollection("game", ({ data }) => !data.draft);
 const allEnglish = await getCollection("english", ({ data }) => !data.draft);
-const allMmd = await getCollection("mmd", ({ data }) => !data.draft);
+const allApps = await getCollection("apps", ({ data }) => !data.draft);
 
 const sortByDate = <T extends { data: { pubDate: Date } }>(arr: T[]) =>
     [...arr].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const allSorted = sortByDate([...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allMmd])
+const allSorted = sortByDate([...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allApps])
     .map((p) => attachMeta(p));
 
-// Latest Posts: 先頭1件（大カード）＋次の3件（リスト）
 const heroPost = allSorted[0];
 const listPosts = allSorted.slice(1, 4);
 
-// タブ用：各カテゴリ3件
 const tabItems = {
     diary: sortByDate(allDiaries).slice(0, 3).map((p) => attachMeta(p)),
     book: sortByDate(allBooks).slice(0, 3).map((p) => attachMeta(p)),
     game: sortByDate(allGames).slice(0, 3).map((p) => attachMeta(p)),
     english: sortByDate(allEnglish).slice(0, 3).map((p) => attachMeta(p)),
-    mmd: sortByDate(allMmd).slice(0, 3).map((p) => attachMeta(p)),
+    apps: sortByDate(allApps).slice(0, 3).map((p) => attachMeta(p)),
 };
 
-const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allMmd]
+const featured = [...allDiaries, ...allBooks, ...allGames, ...allEnglish, ...allApps]
     .filter((item) => item.data.featured !== undefined)
     .sort((a, b) => (a.data.featured ?? 0) - (b.data.featured ?? 0))
     .map((p) => attachMeta(p));
@@ -55,7 +53,6 @@ const hasContent = allSorted.length > 0;
                         <FeaturedContent items={featured} />
                     )}
 
-                    {/* Latest Posts: 左に大カード、右にリスト3件 */}
                     {heroPost && (
                         <section>
                             <SectionHeader
@@ -64,11 +61,9 @@ const hasContent = allSorted.length > 0;
                                 viewAllText="View all posts →"
                             />
                             <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                                {/* 左：大カード */}
                                 <div>
                                     <Card entry={heroPost} loading="eager" />
                                 </div>
-                                {/* 右：リスト3件 */}
                                 <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
                                     {listPosts.map((post) => (
                                         <ListCard entry={post} loading="lazy" />
@@ -78,7 +73,6 @@ const hasContent = allSorted.length > 0;
                         </section>
                     )}
 
-                    {/* カテゴリ別タブ（タイトル・View allなし、各3件＋カテゴリView all） */}
                     {allSorted.length > 0 && (
                         <ContentGrid
                             items={allSorted}
