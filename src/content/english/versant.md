@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "versant"]
+englishType: "exam"
 image:
   src: "/images/english/名称未設定-3.jpg"
   alt: "カバー画像"

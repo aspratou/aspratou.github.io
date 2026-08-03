@@ -1,7 +1,7 @@
 ---
 title: "大乱闘スマッシュブラザーズ SPECIAL"
 description: "大乱闘スマッシュブラザーズ SPECIAL"
-pubDate: 2026-07-19
+pubDate: 2026-06-11
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]

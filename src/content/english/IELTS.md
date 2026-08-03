@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "vrc"]
+englishType: "exam"
 image:
   src: "/images/english/715_400_2013062519022451c96ab0b2f37.jpg"
   alt: "カバー画像"

@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english"]
+englishType: "game"
 image:
   src: "/images/english/images.jpg"
   alt: "カバー画像"

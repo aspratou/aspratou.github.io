@@ -1,7 +1,7 @@
 ---
 title: "ストリートファイター6"
 description: "ストリートファイター6"
-pubDate: 2026-07-18
+pubDate: 2026-06-12
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]

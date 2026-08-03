@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["game"]
 tags: ["game"]
+status: "in-progress"
 image:
   src: "/images/game/donkeykong64.webp"
   alt: "カバー画像"

@@ -1,16 +1,86 @@
 ---
 import { getCollection } from "astro:content";
-import ListLayout from "../../layouts/ListLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/layouts/Container.astro";
 import { attachMeta } from "../../utils/meta";
 
 const games = (await getCollection("game", ({ data }) => !data.draft))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .map((p) => attachMeta(p));
+
+const STATUS_LABELS: Record<string, string> = {
+    completed: "クリア済み",
+    "in-progress": "プレイ中",
+    planned: "積みゲー",
+};
+
+const STATUS_STYLES: Record<string, string> = {
+    completed: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    "in-progress": "bg-[#3EA8FF]/10 text-[#3EA8FF]",
+    planned: "bg-gray-100 text-gray-500 dark:bg-[#2C2C30] dark:text-gray-400",
+};
 ---
 
-<ListLayout
-    title="Game" 
+<BaseLayout
+    title="Game"
     description="A collection of my games."
     ogImage="https://res.cloudinary.com/dellp9a4z/image/upload/v1756758388/og-projects_mj7lcc.png"
-    entries={games} 
-/>
+>
+    <Container class="py-12">
+        <h1 class="mb-8 text-3xl font-bold">Game</h1>
+
+        <div class="flex flex-col divide-y divide-[#E2E8F0] dark:divide-[#2C2C30]">
+            {games.map((game) => {
+                const { title, image, pubDate, tags, status } = game.data;
+                const { plainText } = game.meta || {};
+                const statusLabel = STATUS_LABELS[status] ?? status;
+                const statusStyle = STATUS_STYLES[status] ?? STATUS_STYLES.completed;
+
+                return (
+                    <a
+                        href={`/game/${game.id}`}
+                        class="group flex gap-5 py-5 transition-colors hover:bg-[#F0F9FF] dark:hover:bg-[#242428] -mx-4 px-4 rounded-lg"
+                    >
+                        {/* サムネ（横長・大きめ） */}
+                        <div class="w-40 shrink-0 sm:w-56">
+                            <img
+                                src={image.src}
+                                alt={image.alt ?? title}
+                                loading="lazy"
+                                class="w-full rounded-lg shadow-sm object-cover aspect-video"
+                            />
+                        </div>
+
+                        {/* メタ情報 */}
+                        <div class="flex flex-col justify-between min-w-0 flex-1">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h2 class="text-base font-semibold text-gray-900 dark:text-gray-100 group-hover:text-[#3EA8FF] transition-colors line-clamp-2">
+                                        {title}
+                                    </h2>
+                                </div>
+                                <span class={`inline-block rounded-full px-2 py-0.5 text-xs mb-2 ${statusStyle}`}>
+                                    {statusLabel}
+                                </span>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                                    {plainText ? plainText.slice(0, 100) : ""}
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-2 mt-3">
+                                {tags.map((tag) => (
+                                    <span class="rounded-full bg-gray-100 dark:bg-[#2C2C30] px-2 py-0.5 text-xs text-gray-500 dark:text-gray-400">
+                                        {tag}
+                                    </span>
+                                ))}
+                                <span class="text-xs text-gray-400 dark:text-gray-500">
+                                    {pubDate.toLocaleDateString("ja-JP", { year: "numeric", month: "short", day: "numeric" })}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                );
+            })}
+        </div>
+    </Container>
+</BaseLayout>

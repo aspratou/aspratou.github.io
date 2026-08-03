@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "vrc"]
+englishType: "game"
 image:
   src: "/images/english/VRChat.webp"
   alt: "カバー画像"

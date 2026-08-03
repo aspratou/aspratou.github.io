@@ -393,26 +393,35 @@ npx cap sync ios && npx cap open ios</code></pre>
         const buttons = container.querySelectorAll("[data-etab]");
         const panels = container.querySelectorAll("[data-epanel]");
 
+        function activateTab(key: string) {
+            buttons.forEach((b) => {
+                const el = b as HTMLElement;
+                const active = el.dataset.etab === key;
+                el.classList.toggle("bg-[#3EA8FF]", active);
+                el.classList.toggle("text-white", active);
+                el.classList.toggle("bg-[#F0F4F8]", !active);
+                el.classList.toggle("text-gray-600", !active);
+                el.classList.toggle("dark:bg-[#2C2C30]", !active);
+                el.classList.toggle("dark:text-gray-300", !active);
+            });
+
+            panels.forEach((panel) => {
+                const el = panel as HTMLElement;
+                el.classList.toggle("hidden", el.dataset.epanel !== key);
+            });
+        }
+
         buttons.forEach((button) => {
             button.addEventListener("click", () => {
                 const key = (button as HTMLElement).dataset.etab;
-
-                buttons.forEach((b) => {
-                    const el = b as HTMLElement;
-                    const active = el.dataset.etab === key;
-                    el.classList.toggle("bg-[#3EA8FF]", active);
-                    el.classList.toggle("text-white", active);
-                    el.classList.toggle("bg-[#F0F4F8]", !active);
-                    el.classList.toggle("text-gray-600", !active);
-                    el.classList.toggle("dark:bg-[#2C2C30]", !active);
-                    el.classList.toggle("dark:text-gray-300", !active);
-                });
-
-                panels.forEach((panel) => {
-                    const el = panel as HTMLElement;
-                    el.classList.toggle("hidden", el.dataset.epanel !== key);
-                });
+                if (key) activateTab(key);
             });
         });
+
+        // URLハッシュ（#readme / #prd / #tech）で初期タブを切り替え
+        const hashKey = window.location.hash.replace("#", "");
+        if (hashKey && ["readme", "prd", "tech"].includes(hashKey)) {
+            activateTab(hashKey);
+        }
     }
 </script>

@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english", "versant"]
+englishType: "exam"
 image:
   src: "/images/english/post412_img1.jpg"
   alt: "カバー画像"

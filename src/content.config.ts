@@ -64,6 +64,12 @@ const bookSchema = projectSchema.extend({
   rating: z.number().min(1).max(5),
 });
 
+const englishSchema = projectSchema.extend({
+  englishType: z
+    .enum(["book", "exam", "game", "note"])
+    .default("note"),
+});
+
 const legal = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/legal" }),
   schema: z.object({
@@ -98,7 +104,7 @@ export const collections = {
   }),
   english: defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/english" }),
-    schema: projectSchema, 
+    schema: englishSchema, 
   }),
   apps: defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/apps" }),

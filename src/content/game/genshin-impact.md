@@ -1,11 +1,12 @@
 ---
 title: "原神"
 description: "3年以上プレイしているゲーム"
-pubDate: 2026-06-24
+pubDate: 2026-06-14
 draft: false
 license: "all-rights-reserved"
 categories: ["game"]
 tags: ["game"]
+status: "in-progress"
 image:
   src: "/images/game/2021021012571650539.jpg"
   alt: "カバー画像"

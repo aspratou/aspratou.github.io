@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["english"]
 tags: ["english"]
+englishType: "book"
 image:
   src: "/images/english/617gdIbyreL._SL1200_.jpg"
   alt: "カバー画像"

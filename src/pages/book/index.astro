@@ -29,7 +29,7 @@ const books = (await getCollection("book", ({ data }) => !data.draft))
                         class="group flex gap-5 py-5 transition-colors hover:bg-[#F0F9FF] dark:hover:bg-[#242428] -mx-4 px-4 rounded-lg"
                     >
                         {/* 書影 */}
-                        <div class="w-20 shrink-0 sm:w-24">
+                        <div class="w-28 shrink-0 sm:w-36">
                             <img
                                 src={image.src}
                                 alt={image.alt ?? title}
