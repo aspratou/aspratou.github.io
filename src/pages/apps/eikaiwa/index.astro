@@ -59,6 +59,10 @@ import Container from "../../../components/layouts/Container.astro";
                     class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 bg-[#F0F4F8] text-gray-600 hover:bg-[#E2E8F0] dark:bg-[#2C2C30] dark:text-gray-300">
                     技術仕様
                 </button>
+                <button type="button" data-etab="install"
+                    class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 bg-[#F0F4F8] text-gray-600 hover:bg-[#E2E8F0] dark:bg-[#2C2C30] dark:text-gray-300">
+                    インストール手順
+                </button>
             </div>
 
             {/* README */}
@@ -382,6 +386,125 @@ npx cap sync ios && npx cap open ios</code></pre>
                     </div>
                 </section>
             </div>
+
+            {/* インストール手順 */}
+            <div data-epanel="install" class="hidden">
+                <section class="mb-10">
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">
+                        パートA: Macで.ipaを作る（開発者）
+                    </h2>
+
+                    <h3 class="mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">1. 最新のコードを反映してビルド</h3>
+                    <pre class="bg-gray-50 dark:bg-[#242428] rounded-lg p-4 text-sm overflow-x-auto text-gray-700 dark:text-gray-300"><code>cd ~/Downloads/eikaiwa-app/eikaiwa-app-starter/eikaiwa-app
+npm install
+npm run build
+npx cap sync ios
+npx cap open ios</code></pre>
+                    <div class="mt-3 rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-800 dark:text-amber-300">
+                        <p class="font-semibold mb-1">⚠️ 詰まりがちなポイント</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Permission denied → <code class="text-xs">chmod -R +x node_modules/.bin</code></li>
+                            <li>process.cwd failed → <code class="text-xs">cd ~</code>してからパスに入り直す</li>
+                            <li>Missing package product → Xcodeで File → Packages → Reset Package Caches</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">2. アーカイブを作る</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>Xcode上部のデバイス選択を「Any iOS Device (arm64)」に変更</li>
+                        <li>メニューの「Product」→「Archive」（数分かかります）</li>
+                        <li>完了するとOrganizerウィンドウが開く</li>
+                    </ul>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">3. .ipaを手動で作る</h3>
+                    <div class="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-800 dark:text-amber-300 mb-2">
+                        ⚠️「Distribute App」は無料アカウントだとエラーになるので使いません。
+                    </div>
+                    <ol class="list-decimal list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>Organizerでアーカイブを右クリック →「Show in Finder」</li>
+                        <li>.xcarchiveファイルを右クリック →「パッケージの内容を表示」</li>
+                        <li>Products/Applications/ の中の App.app をデスクトップにコピー</li>
+                        <li>デスクトップに Payload という名前のフォルダを作る（大文字P、厳守）</li>
+                        <li>その中に App.app を入れる</li>
+                        <li>Payloadフォルダを右クリック →「圧縮」</li>
+                        <li>できたzipの拡張子を .zip から .ipa に変更（例: Lingoop.ipa）</li>
+                    </ol>
+                    <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+                        この.ipaを家族に渡します（AirDrop、Googleドライブ、LINEなど何でも可）。
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="mb-4 text-xl font-bold border-b border-[#E2E8F0] dark:border-[#2C2C30] pb-2 text-gray-900 dark:text-gray-100">
+                        パートB: インストール側の作業
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        パソコン（Mac/Windowsどちらでも可）が必要です。
+                    </p>
+
+                    <h3 class="mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">1. AltServerをインストール</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                        <a href="https://altstore.io" target="_blank" rel="noopener noreferrer" class="text-[#3EA8FF] hover:underline">https://altstore.io</a> から「AltServer macOS」または「AltServer Windows」をダウンロード。
+                    </p>
+                    <div class="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-800 dark:text-amber-300">
+                        ⚠️ 注意: 上にある「AltStore PAL」は別物です。あちらは有料のDeveloper Program登録が必要なので、必ず下の「AltStore Classic」側を選んでください。
+                    </div>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">2. Windowsの場合のみ: iTunesとiCloudが必要</h3>
+                    <div class="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-800 dark:text-amber-300 mb-2">
+                        ⚠️ Microsoft Store版ではなく、Apple公式サイトから直接ダウンロードした版でないとAltServerが認識しません。
+                    </div>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>iTunes: <a href="https://www.apple.com/itunes/download/win64" target="_blank" rel="noopener noreferrer" class="text-[#3EA8FF] hover:underline break-all">https://www.apple.com/itunes/download/win64</a></li>
+                        <li>iCloud: <a href="https://updates.cdn-apple.com/2020/windows/001-39935-20200911-1A70AA56-F448-11EA-8CC0-99D41950005E/iCloudSetup.exe" target="_blank" rel="noopener noreferrer" class="text-[#3EA8FF] hover:underline break-all">iCloudSetup.exe</a></li>
+                    </ul>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                        どちらも右クリック →「管理者として実行」でインストールし、インストール後に再起動してください。
+                    </p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                        すでに古いiTunesが入っている場合は、一度すべてアンインストール（iTunes → Apple Software Update → Apple Mobile Device Support → Bonjour → Apple Application Support の順）してから入れ直すのが確実です。
+                    </p>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">3. iPhoneをUSB接続</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        初回は「このコンピュータを信頼しますか」→「信頼」。
+                    </p>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">4. AltStoreをiPhoneにインストール</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>AltServerを起動（メニューバー/タスクトレイに常駐）</li>
+                        <li>アイコンをクリック →「Install AltStore」→ 自身のiPhoneを選択</li>
+                        <li>自身のApple IDでログイン（無料でOK）</li>
+                    </ul>
+                    <div class="mt-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-800 dark:text-amber-300">
+                        ⚠️ 使う本人のApple IDを入れてください。
+                    </div>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">5. iPhoneでデベロッパを信頼</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        設定 → 一般 → VPNとデバイス管理 → 該当のApple IDを信頼
+                    </p>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">6. .ipaをインストール</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>.ipaをiPhoneの「ファイル」アプリに保存</li>
+                        <li>iPhoneのAltStoreアプリを開く</li>
+                        <li>「My Apps」タブ →「+」ボタン → その.ipaを選択</li>
+                    </ul>
+
+                    <h3 class="mt-6 mb-2 text-base font-semibold text-gray-800 dark:text-gray-200">継続利用のための注意</h3>
+                    <div class="rounded-lg bg-amber-50 dark:bg-amber-900/20 p-3 text-sm text-amber-800 dark:text-amber-300">
+                        ⚠️ 7日ごとに更新が必要です（無料Apple IDの制限）。iPhoneとパソコンを同じWi-Fiに繋いだ状態で（AltServer起動中）、AltStoreアプリの「My Apps」を下に引っ張って更新。忘れるとアプリが起動できなくなりますが、更新すれば復活します。
+                    </div>
+
+                    <br>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                        <li>初回起動時にアカウント登録が必要（メールアドレスとパスワード）。</li>
+                        <li>マイクと音声認識の許可を求められるので「許可」を選ぶ</li>
+                        <li>会話内容はAI応答のためCloudflareに送信されます（プライバシーポリシーに記載）</li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </Container>
 </BaseLayout>
@@ -420,7 +543,7 @@ npx cap sync ios && npx cap open ios</code></pre>
 
         // URLハッシュ（#readme / #prd / #tech）で初期タブを切り替え
         const hashKey = window.location.hash.replace("#", "");
-        if (hashKey && ["readme", "prd", "tech"].includes(hashKey)) {
+        if (hashKey && ["readme", "prd", "tech", "install"].includes(hashKey)) {
             activateTab(hashKey);
         }
     }
