@@ -53,10 +53,6 @@ export const header = [
     name: "Contact",
     url: "/contact",
   },
-  {
-    name: "About",
-    url: "/about",
-  },
 ];
 
 export const footer = [
