@@ -6,7 +6,6 @@ draft: false
 license: "all-rights-reserved"
 categories: ["game"]
 tags: ["game"]
-status: "in-progress"
 image:
   src: "/images/game/y_6572c64757eea.jpg"
   alt: "カバー画像"

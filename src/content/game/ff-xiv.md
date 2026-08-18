@@ -6,6 +6,7 @@ draft: false
 license: "all-rights-reserved"
 categories: ["game"]
 tags: ["game"]
+status: "in-progress"
 image:
   src: "/images/game/スクリーンショット 2026-08-08 164425.png"
   alt: "カバー画像"

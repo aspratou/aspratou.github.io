@@ -1,7 +1,7 @@
 ---
 title: "全人類の教養大全２"
 description: "ここ最近で一番面白くて一番ためになった本"
-pubDate: 2026-08-18
+pubDate: 2026-08-19
 draft: false
 license: "all-rights-reserved"
 categories: ["book"]
